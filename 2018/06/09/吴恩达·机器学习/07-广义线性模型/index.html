@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>广义线性模型 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,softmax,指数分布族">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="广义线性模型，英文名为Generalized Linear Model，简称GLM。 之前，涉及到两种的两种模型： 1. 线性拟合模型，假设了\(P(y|x;\theta)\)是高斯分布 2. 二分类问题，假设了\(P(y|x;\theta)\)满足伯努利分布 但以上两者知识一种更广泛的，被称为『指数分布族』（The Exponential Family）的特例。 指数分布族 \[ P(y;\et">
+<meta name="keywords" content="机器学习,softmax,指数分布族">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广义线性模型">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="广义线性模型，英文名为Generalized Linear Model，简称GLM。 之前，涉及到两种的两种模型： 1. 线性拟合模型，假设了\(P(y|x;\theta)\)是高斯分布 2. 二分类问题，假设了\(P(y|x;\theta)\)满足伯努利分布 但以上两者知识一种更广泛的，被称为『指数分布族』（The Exponential Family）的特例。 指数分布族 \[ P(y;\et">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-20T14:20:52.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="广义线性模型">
+<meta name="twitter:description" content="广义线性模型，英文名为Generalized Linear Model，简称GLM。 之前，涉及到两种的两种模型： 1. 线性拟合模型，假设了\(P(y|x;\theta)\)是高斯分布 2. 二分类问题，假设了\(P(y|x;\theta)\)满足伯努利分布 但以上两者知识一种更广泛的，被称为『指数分布族』（The Exponential Family）的特例。 指数分布族 \[ P(y;\et">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file active"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/07-广义线性模型" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/softmax/">softmax</a>, <a class="tag-link" href="/wiki/tags/指数分布族/">指数分布族</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">
+            <time datetime="2018-06-09T08:29:00.000Z" itemprop="datePublished">2018-06-09</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/07-广义线性模型.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/07-广义线性模型.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/07-广义线性模型.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            广义线性模型
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>广义线性模型，英文名为<strong>Generalized Linear Model</strong>，简称GLM。</p>
+<p>之前，涉及到两种的两种模型： 1. 线性拟合模型，假设了<span class="math inline">\(P(y|x;\theta)\)</span>是高斯分布 2. 二分类问题，假设了<span class="math inline">\(P(y|x;\theta)\)</span>满足伯努利分布</p>
+<p>但以上两者知识一种更广泛的，被称为『指数分布族』（The Exponential Family）的特例。</p>
+<h2 id="指数分布族">指数分布族</h2>
+<p><span class="math display">\[
+P(y;\eta)=b(y)exp(\eta^TT(y)-a(\eta))
+\]</span></p>
+<p>可以被表示为以上形式的分布，都是指数分布族的某个特定分布，给定<span class="math inline">\(a, b, T\)</span>，就可以定义一个概率分布的集合，以<span class="math inline">\(\eta\)</span>为参数，就可以得到不同的概率分布。</p>
+<p>在广义线性模型中，会假设<span class="math inline">\(\eta=\theta^Tx\)</span>，也就是<span class="math inline">\(\eta\)</span>和特征<span class="math inline">\(x\)</span>线性相关。</p>
+<h2 id="伯努利分布">伯努利分布</h2>
+<p>首先，我们给出<span class="math inline">\(y=1\)</span>的概率： <span class="math display">\[
+P(y=1;\phi)=\phi
+\]</span> 于是： <span class="math display">\[
+\begin{align}
+P(y;\phi)
+    &amp;= \phi^y(1-\phi)^T\\\
+    &amp;= exp(log(\phi^T(1-\phi^T)))\\\
+    &amp;= exp(ylog(\phi)+(1-y)log(1-\phi))\\\
+    &amp;= exp(log\frac{\phi}{1-\phi} \cdot y + log(1-\phi))
+\end{align}
+\]</span> 比较我们上面的概率形式和指数分布族的标准形式，可以得到： <span class="math display">\[
+\begin{cases}
+\eta &amp;= log\frac{\phi}{1-\phi}, \text{于是} \phi=\frac{1}{1+e^{-\eta}}\\\
+a(\eta) &amp;= -log(1-\phi)=log(1+e^\eta)\\\
+T(y) &amp;= y\\\
+b(y) &amp;= 1
+\end{cases}
+\]</span></p>
+<p>这里的<span class="math inline">\(\phi\)</span>一般会被称为正则响应函数（<em>canonic response function</em>）： <span class="math display">\[
+g(\eta) = E[y|\eta]=\frac{1}{1+e^{-\eta}}
+\]</span> 相对的，正则关联函数（<em>canonic link function</em>）则是<span class="math inline">\(g^{-1}\)</span>。</p>
+<h2 id="高斯分布">高斯分布</h2>
+<p><span class="math display">\[
+N(\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}}exp(-\frac{1}{2}(y-\mu)^2)
+\]</span></p>
+<p>这里，出于简洁考虑，假设<span class="math inline">\(\sigma=1\)</span>，经过一系列化简后，可以表示成： <span class="math display">\[
+\frac{1}{\sqrt{2\pi}} \cdot exp(-\frac{1}{2}y^2) \cdot exp(\mu y-\frac{1}{2}\mu^2)
+\]</span> 那么， <span class="math display">\[
+\begin{cases}
+\eta &amp;= \mu\\\
+a(\eta) &amp;= \frac{1}{2}\mu^2=\frac{1}{2}\eta^2\\\
+T(y) &amp;= y\\\
+b(y) &amp;= \frac{1}{\sqrt{2\pi}} \cdot exp(-\frac{1}{2}y^2)
+\end{cases}
+\]</span></p>
+<h2 id="多项式分布">多项式分布</h2>
+<h4 id="建模">建模</h4>
+<p>在二项分布中，<span class="math inline">\(y\in \lbrace 1, 2 \rbrace\)</span></p>
+<p>而多项式分布，<span class="math inline">\(y \in \lbrace 1,\cdots, k \rbrace\)</span></p>
+<p>一般会被用来进行邮件分类或者进行病情分类等等</p>
+<p>我们假设 <span class="math display">\[
+P(y=i)=\phi_i
+\]</span> 也即，邮件属于<span class="math inline">\(i\)</span>类的概率是<span class="math inline">\(\phi_i\)</span>，是关于特征<span class="math inline">\(x\)</span>的一个函数。</p>
+<p>那么，可以用<span class="math inline">\(k\)</span>个参数来建模多项式分布 <span class="math display">\[
+P(y)=\prod_{i=1}^k\phi_i^{1\lbrace y=i \rbrace}
+\]</span></p>
+<p>其中，<span class="math inline">\(1 \lbrace \cdots \rbrace\)</span>的含义为，检验<span class="math inline">\(\cdots\)</span>是否为真命题，若为真命题，则取1，否则取0。</p>
+<p>因为所有概率和为1，所以最后一个参数 <span class="math display">\[
+\begin{align}
+\phi_k &amp;= 1-\sum_{j=1}^{k-1}\phi_j \\\
+1 \lbrace y=k \rbrace &amp;=1-\sum_{j=1}^{k-1}1 \lbrace y=j \rbrace
+\end{align}
+\]</span> 经过化简，也可以表示成： <span class="math display">\[
+P(y)=exp[\sum_{i=1}^{k-1}(log(\frac{\phi_i}{\phi_k}) \cdot 1\lbrace y=i \rbrace )] + log(\phi_k)
+\]</span> 故而 <span class="math display">\[
+\eta = \begin{bmatrix}
+log(\frac{\phi_1}{\phi_k}) \\\
+\vdots \\\
+log(\frac{\phi_{k-1}}{\phi_k})
+\end{bmatrix} \in \Bbb R^{k-1}
+\]</span> <span class="math display">\[
+a(\eta) = -log(\phi_k)
+\]</span> <span class="math display">\[
+T(y)= \begin{bmatrix}
+1 \lbrace y=1 \rbrace \\\
+\vdots \\\
+1 \lbrace y=k-1 \rbrace
+\end{bmatrix} \in (0, 1)^{k-1}
+\]</span> <span class="math display">\[
+b(y) = 1
+\]</span></p>
+<p>根据<span class="math inline">\(\eta\)</span>可得： <span class="math display">\[
+\phi_i = e^{\eta_i} \cdot \phi_k
+\]</span> 又因为： <span class="math display">\[
+\sum_{i=1}^{k}\phi_i=\sum_{i=1}^k\phi_ke^{\eta_i}=1
+\]</span> 故而： <span class="math display">\[
+\phi_k = \frac{1}{\sum_{i=1}^ke^{\eta_i}}=\frac{1}{e^{\eta_k}+\sum_{i=1}^{k-1}e^{\eta_i}} = \frac{1}{1+\sum_{i=1}^{k-1}e^{\eta_i}}
+\]</span> 所以： <span class="math display">\[
+\begin{align}
+\phi_i &amp;= e^{\eta_i} \cdot \phi_k \\\
+&amp;= \frac{e^{\eta_i}}{1 + \sum_{j=1}^{k-1}e^{\eta_j}} \\\
+&amp;= \frac{e^{\theta_i^Tx_i}}{1 + \sum_{j=1}^{k-1}e^{\theta_j^Tx_j}}
+\end{align}
+\]</span> 上述函数，被称为『softmax』函数，这个函数的作用经常用于进行归一化。</p>
+<p>经过上述步骤，假设函数可以被写成如下形式： <span class="math display">\[
+h_\theta(x)=
+\left[
+\begin{array}{c}
+1\lbrace y=1 \rbrace  \\\
+\vdots \\\
+1\lbrace y=k-1 \rbrace
+\end{array} | x;\theta
+\right]=
+\begin{bmatrix}
+\phi_1\\\
+\vdots\\\
+\phi_{k-1}
+\end{bmatrix}
+\]</span></p>
+<h4 id="回归">回归</h4>
+<p>在经过上述推导，当我们有一堆训练集（<span class="math inline">\((x^{(1)}, y^{(1)}), \cdots, (x^{(m)}, y^{(m)})\)</span>）用于训练的时候，则可以进行极大似然估计： <span class="math display">\[
+L(\theta) = \prod_{i=1}^mP(y^{(i)} | x^{(i)};\theta) = \prod_{i=1}^m\prod_{j=1}^k\phi_j^{1\lbrace y^{(i)}=j \rbrace }
+\]</span></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    生成学习算法的概念
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">牛顿法</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

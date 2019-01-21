@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>牛顿法 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,牛顿法">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="牛顿法（英语：Newton&apos;s method）又称为牛顿-拉弗森方法（英语：Newton-Raphson method），它是一种在实数域和复数域上近似求解方程的方法。方法使用函数\(\displaystyle f(x)\)的泰勒级数的前面几项来寻找方程\(\displaystyle f(y)=0\)的根。 ——维基百科  牛顿法可以通过迭代逼近的方法，求得函数\(f(x)=0\)的解。   先">
+<meta name="keywords" content="机器学习,牛顿法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛顿法">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="牛顿法（英语：Newton&apos;s method）又称为牛顿-拉弗森方法（英语：Newton-Raphson method），它是一种在实数域和复数域上近似求解方程的方法。方法使用函数\(\displaystyle f(x)\)的泰勒级数的前面几项来寻找方程\(\displaystyle f(y)=0\)的根。 ——维基百科  牛顿法可以通过迭代逼近的方法，求得函数\(f(x)=0\)的解。   先">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-6-7/69557176.jpg">
+<meta property="og:updated_time" content="2019-01-20T14:20:52.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="牛顿法">
+<meta name="twitter:description" content="牛顿法（英语：Newton&apos;s method）又称为牛顿-拉弗森方法（英语：Newton-Raphson method），它是一种在实数域和复数域上近似求解方程的方法。方法使用函数\(\displaystyle f(x)\)的泰勒级数的前面几项来寻找方程\(\displaystyle f(y)=0\)的根。 ——维基百科  牛顿法可以通过迭代逼近的方法，求得函数\(f(x)=0\)的解。   先">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-6-7/69557176.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file active"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/06-牛顿法" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/牛顿法/">牛顿法</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">
+            <time datetime="2018-06-07T12:40:00.000Z" itemprop="datePublished">2018-06-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/06-牛顿法.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/06-牛顿法.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/06-牛顿法.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            牛顿法
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <blockquote>
+<p><strong>牛顿法</strong>（英语：Newton's method）又称为<strong>牛顿-拉弗森方法</strong>（英语：Newton-Raphson method），它是一种在实数域和复数域上近似求解方程的方法。方法使用函数<span class="math inline">\(\displaystyle f(x)\)</span>的<a href="https://zh.wikipedia.org/wiki/%E6%B3%B0%E5%8B%92%E7%BA%A7%E6%95%B0" target="_blank" rel="noopener">泰勒级数</a>的前面几项来寻找方程<span class="math inline">\(\displaystyle f(y)=0\)</span>的根。</p>
+<p>——维基百科</p>
+</blockquote>
+<p>牛顿法可以通过迭代逼近的方法，求得函数<span class="math inline">\(f(x)=0\)</span>的解。</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-6-7/69557176.jpg"></p>
+<ol type="1">
+<li>先初始化某个点<span class="math inline">\(x_0\)</span>，对该点求导数<span class="math inline">\(f&#39;(x_0)\)</span>，可以得到一条切线；</li>
+<li>切线会和横轴再有一个交点<span class="math inline">\(x_1\)</span>，然后再重复第一步；</li>
+<li>直到<span class="math inline">\(f(x_n)=0\)</span></li>
+</ol>
+<p>通过一系列推导，我们可以得知： <span class="math display">\[
+x_{i+1}-x_{i}=\frac{f(x^{(i)})}{f&#39;(x^{(i)})}
+\]</span> 于是，我们可以将牛顿法用于极大似然估计，也就是求<span class="math inline">\(l(\theta)\)</span>的最大值，可以看做是求<span class="math inline">\(l&#39;(\theta)=0\)</span>的解。</p>
+<p>那么，每次迭代就可以写成： <span class="math display">\[
+\theta^{(t+1)}=\theta^{(t)}-\frac{l&#39;(\theta^{(t)})}{l&#39;&#39;(\theta^{(t)}}
+\]</span> 更一般地，可以写成： <span class="math display">\[
+\theta^{(t+1)}=\theta^{(t)}-H^{-1}\nabla_\theta l
+\]</span> 其中，<span class="math inline">\(H\)</span>是<span class="math inline">\(l(\theta)\)</span>的Hessian矩阵： <span class="math display">\[
+H_{ij}=\frac{\partial^2l}{\partial\theta_i\partial\theta_j}
+\]</span> 但这个方法有个缺点，每次迭代的时候，都需要重新计算<span class="math inline">\(H^{-1}\)</span>，虽然牛顿法对函数<span class="math inline">\(f\)</span>有很多要求和限制，但对于logistic函数而言，足够有效。</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    广义线性模型
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">二分类问题</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

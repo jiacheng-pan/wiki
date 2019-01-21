@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>SVM（三）核函数 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,SVM,核函数">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="在SVM(二)中，我们看到了如下的表示形式： \[ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) \] 这里，内积\((x_i \cdot x_j)\)就是最简单的核函数的形式。一般核函数会被写成\(\langle x^{(i)}, x^{(j)}">
+<meta name="keywords" content="机器学习,SVM,核函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM（三）核函数">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="在SVM(二)中，我们看到了如下的表示形式： \[ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) \] 这里，内积\((x_i \cdot x_j)\)就是最简单的核函数的形式。一般核函数会被写成\(\langle x^{(i)}, x^{(j)}">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-23/7489488.jpg">
+<meta property="og:updated_time" content="2019-01-20T14:21:01.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVM（三）核函数">
+<meta name="twitter:description" content="在SVM(二)中，我们看到了如下的表示形式： \[ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) \] 这里，内积\((x_i \cdot x_j)\)就是最简单的核函数的形式。一般核函数会被写成\(\langle x^{(i)}, x^{(j)}">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-23/7489488.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file active"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/12-SVM（三）核函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/SVM/">SVM</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/核函数/">核函数</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">
+            <time datetime="2018-07-22T13:33:00.000Z" itemprop="datePublished">2018-07-22</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            SVM（三）核函数
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>在SVM(二)中，我们看到了如下的表示形式： <span class="math display">\[
+W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j)
+\]</span> 这里，内积<span class="math inline">\((x_i \cdot x_j)\)</span>就是最简单的核函数的形式。一般核函数会被写成<span class="math inline">\(\langle x^{(i)}, x^{(j)} \rangle\)</span>的形式。</p>
+<p>有时候，我们会将一些特征转换到高维空间上，就像我们在之前的<a href="https://jackieanxis.github.io/blog-cs229/2018/06/04/3.%20%E8%BF%87%E6%8B%9F%E5%90%88&amp;%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/" target="_blank" rel="noopener">3. 过拟合&amp;局部加权回归</a>中提到的，比如特征<span class="math inline">\(x\)</span>表示的是房屋面积，我们需要预测房子是否会在6个月内被卖出，我们有时候会将这个特征映射成如下的形式： <span class="math display">\[
+x \rightarrow \begin{bmatrix}
+x \\\
+x^2 \\\
+x^3 \\\
+x^4
+\end{bmatrix} = \phi(x)
+\]</span> 原先的特征的内积形式<span class="math inline">\(\langle x^{(i)}, x^{(j)} \rangle\)</span>会被写成<span class="math inline">\(\langle \phi(x^{(i)}), \phi(x^{(j)}) \rangle\)</span>，而且往往<span class="math inline">\(\phi(x)\)</span>会有很高的维度。因为在很多情况下，计算<span class="math inline">\(\phi(x)\)</span>会有很高的代价，或者表示<span class="math inline">\(\phi(x)\)</span>需要很高的代价，但是光是计算内核则可能代价较小。</p>
+<p>比如：假如有两个输入：<span class="math inline">\(x, z \in \Bbb R^n\)</span>，核函数被定义为： <span class="math display">\[
+\begin{align}
+k(x, z) = (x^T z)^2 &amp;= (\sum_{i=1}^nx_iz_i)(\sum_{j=1}^nx_jz_j) \\\
+&amp;=\sum_{i=1}^n\sum_{j=1}^n(x_ix_j)(z_iz_j) \\\
+&amp;= \phi(x)^T\phi(z)
+\end{align}
+\]</span> 假如需要表示成高维向量，那么<span class="math inline">\(\phi(x)\)</span>是一个<span class="math inline">\(n \times n\)</span>维的向量，如果<span class="math inline">\(n = 3\)</span>： <span class="math display">\[
+\phi(x) = \begin{bmatrix}
+x_1x_1 \\\
+x_1x_2 \\\
+x_1x_3 \\\
+x_2x_1 \\\
+\vdots \\\
+x_3x_3
+\end{bmatrix}
+\]</span> 所以，计算<span class="math inline">\(\phi(x)\)</span>的时间复杂度就达到了<span class="math inline">\(O(n^2)\)</span>，而计算核函数仅仅需要计算<span class="math inline">\(x^Tz\)</span>，复杂度为<span class="math inline">\(O(n)\)</span>。</p>
+<p>接下去我们为这个核函数增加常数项： <span class="math display">\[
+k(x,z)=(x^Tz+c)^2
+\]</span> 那么： <span class="math display">\[
+\phi(x) = \begin{bmatrix}
+x_1x_1 \\\
+x_1x_2 \\\
+x_1x_3 \\\
+x_2x_1 \\\
+\vdots \\\
+x_3x_3 \\\
+\sqrt{2c}x_1 \\\
+\sqrt{2c}x_2 \\\
+\sqrt{2c}x_3 \\\
+c
+\end{bmatrix}
+\]</span> 更一般的： <span class="math display">\[
+k(x, z)=(x^Tz+c)^d
+\]</span></p>
+<p>有了核函数，即可替换SVM中的内积<span class="math inline">\(\langle x^{(i)}, x^{(j)} \rangle\)</span>，比如常用的高斯核： <span class="math display">\[
+k(x,z)=\exp(-\frac{||x-z||^2}{2\sigma^2})
+\]</span> 有了核函数，相当于把数据从原始空间转换到了高位空间，很多数据，在一维空间往往是线性不可分的，但是到了高维空间会变成可分的：</p>
+<p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-23/7489488.jpg"></p>
+<h2 id="核函数的合法性">核函数的合法性</h2>
+<p>如何判断一个核函数是合法的呢？判断依据是：是否存在函数<span class="math inline">\(\phi\)</span>，使得<span class="math inline">\(k(x,z)\)</span>能够被写成<span class="math inline">\(\langle \phi(x), \phi(z) \rangle\)</span>。</p>
+<blockquote>
+<p><strong>定理</strong>：如果核函数合法，那么其对应的核矩阵（kernel matrix）是半正定的。</p>
+</blockquote>
+<p>核矩阵指的是矩阵<span class="math inline">\(K \in \Bbb R^{m\times m}\)</span>，其中<span class="math inline">\(K_{ij}=k(x^{(i)}, x^{(j)})\)</span>。半正定的意思是，对于任意向量<span class="math inline">\(z\)</span>，都存在<span class="math inline">\(z^TKz \geq 0\)</span>，证明如下： <span class="math display">\[
+\begin{align}
+z^TKz &amp;= \sum_i\sum_jz_iK_{ij}z_j \\\ 
+&amp;= \sum_i\sum_jz_i\phi_(x^{(i)})^T\phi_(x^{(j)})z_j \\\ 
+&amp;= \sum_i\sum_jz_i\cdot \sum_k\phi_(x^{(i)})_k\underbrace{\phi_(x^{(j)})_k}_{向量第k项} \cdot z_j \\\ 
+&amp;= \sum_k\sum_i\sum_jz_i\cdot \phi_(x^{(i)})_k\phi_(x^{(j)})_k \cdot z_j \\\ 
+&amp;= \sum_k(\sum_iz_i\phi(x^{(i)}))^2 \geq 0
+\end{align}
+\]</span> 事实上，上面的定理的逆命题也一样成立，总结起来：</p>
+<blockquote>
+<p><strong>Merce定理</strong>：给定核函数<span class="math inline">\(k(x, z)\)</span>，那么<span class="math inline">\(k(x, z)\)</span>合法（也即<span class="math inline">\(\exists \phi, k(x,z)=\phi(x)^T\phi(z)\)</span>），当且仅当，对所有的<span class="math inline">\(\lbrace x^{(1)}, \ldots, x^{(m)} \rbrace\)</span>，核矩阵<span class="math inline">\(K \in \Bbb R^{m\times m}\)</span>是一个对称的半正定矩阵。</p>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    SVM（四）非线性决策边界
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">SVM（二）最优间隔分类器</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

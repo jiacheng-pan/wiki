@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>生成学习算法的例子 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,生成学习算法,拉普拉斯平滑">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="例一：高斯判别分析和logistic函数 我们来看一个例子，对于一个高斯判别分析问题，根据贝叶斯： \[ \begin{align} p(y=1|x) &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x)} \\\ &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x|y=0)p(y=0)+p(x|y=1)p(y=1)} \end{align} \] 在这里，我们提出几个">
+<meta name="keywords" content="机器学习,生成学习算法,拉普拉斯平滑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生成学习算法的例子">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="例一：高斯判别分析和logistic函数 我们来看一个例子，对于一个高斯判别分析问题，根据贝叶斯： \[ \begin{align} p(y=1|x) &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x)} \\\ &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x|y=0)p(y=0)+p(x|y=1)p(y=1)} \end{align} \] 在这里，我们提出几个">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/2018-06-30-084350.png">
+<meta property="og:updated_time" content="2019-01-20T14:20:52.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="生成学习算法的例子">
+<meta name="twitter:description" content="例一：高斯判别分析和logistic函数 我们来看一个例子，对于一个高斯判别分析问题，根据贝叶斯： \[ \begin{align} p(y=1|x) &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x)} \\\ &amp;amp;= \frac{p(x|y=1)p(y=1)}{p(x|y=0)p(y=0)+p(x|y=1)p(y=1)} \end{align} \] 在这里，我们提出几个">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/2018-06-30-084350.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file active"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/09-生成学习算法的例子" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/拉普拉斯平滑/">拉普拉斯平滑</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/生成学习算法/">生成学习算法</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">
+            <time datetime="2018-06-29T13:10:00.000Z" itemprop="datePublished">2018-06-29</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/09-生成学习算法的例子.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/09-生成学习算法的例子.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/09-生成学习算法的例子.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            生成学习算法的例子
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="例一高斯判别分析和logistic函数">例一：高斯判别分析和logistic函数</h2>
+<p>我们来看一个例子，对于一个高斯判别分析问题，根据贝叶斯： <span class="math display">\[
+\begin{align}
+p(y=1|x) &amp;= \frac{p(x|y=1)p(y=1)}{p(x)} \\\
+&amp;= \frac{p(x|y=1)p(y=1)}{p(x|y=0)p(y=0)+p(x|y=1)p(y=1)}
+\end{align}
+\]</span> 在这里，我们提出几个假设：</p>
+<ol type="1">
+<li><span class="math inline">\(p(y)\)</span>是均匀分布的，也就是<span class="math inline">\(p(y=1)=p(y=0)\)</span></li>
+<li><span class="math inline">\(x\)</span>的条件概率分布（<span class="math inline">\(p(x|y=0)\)</span>和<span class="math inline">\(p(x|y=1)\)</span>）满足高斯分布。</li>
+</ol>
+<p>考虑二维的情况：</p>
+<figure>
+<img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/2018-06-30-084350.png" alt="image-20180630164349595"><figcaption>image-20180630164349595</figcaption>
+</figure>
+<p>蓝色数据表达的是<span class="math inline">\(p(x|y=0)\)</span>的分布，红色数据表达的是<span class="math inline">\(p(x|y=1)\)</span>的分布，两条蓝色和红色的曲线分别是它们的概率密度曲线。</p>
+<p>而灰色的曲线则表示了<span class="math inline">\(p(y=1|x)\)</span>的概率密度曲线。</p>
+<p>假设<span class="math inline">\(p(x|y=0) \sim N(\mu_0, \sigma_0)\)</span>，<span class="math inline">\(p(x|y=1) \sim N(\mu_1, \sigma_1)\)</span>，而<span class="math inline">\(p(y)\)</span>均匀分布那么： <span class="math display">\[
+\begin{align}
+p(y=1|x) &amp;= \frac{N(\mu_0,\sigma_0)}{N(\mu_0,\sigma_0)+N(\mu_1,\sigma_1)} \\\ 
+&amp;= \cdots \\\
+&amp;= \frac{1}{1+\frac{\sigma_0}{\sigma_1}exp(2\sigma_1^2(x-\mu_0)^2-2\sigma_0^2(x-\mu_1)^2}
+\end{align}
+\]</span> 事实上，这条曲线跟我们之前见过的<em>logistic</em>曲线非常像，特别是当我们假设<span class="math inline">\(\sigma_0=\sigma_1\)</span>的时候，就是一条<em>logistic</em>曲线。</p>
+<p>我们有如下的推广结论： <span class="math display">\[
+{\begin{cases}
+p(x|y=1) \sim Exp Family(\eta_1) \\\
+p(x|y=0) \sim Exp Family(\eta_0)
+\end{cases}} \Rightarrow p(y=1|x)是logistic函数
+\]</span> 但这个命题的逆命题并不成立，故而我们知道，<em>logistic</em>所需要的假设更少（无需假设<span class="math inline">\(x\)</span>的条件概率分布），鲁棒性更强。而生成函数因为对数据的分布做出了假设，所以需要的数据量会少于<em>logstic</em>回归，我们需要在两者之间进行权衡。</p>
+<h2 id="例二垃圾邮件分类1">例二：垃圾邮件分类（1）</h2>
+<p>这里我们会用朴素贝叶斯（Naive Bayes）来解决垃圾邮件分类问题（<span class="math inline">\(y\in \lbrace 0, 1 \rbrace\)</span>）。</p>
+<p>首先对邮件进行建模，生成特征向量如下： <span class="math display">\[
+x=
+\begin{bmatrix}
+0 \\\
+0 \\\
+0 \\\
+\vdots \\\
+1 \\\
+\vdots
+\end{bmatrix}
+\begin{matrix}
+a \\\
+advark \\\
+ausworth \\\
+\vdots \\\
+buy \\\
+\vdots
+\end{matrix}
+\]</span> 这是一个类似于词频向量的特征向量，我们有一个50000个词的词典，如果邮件中出现了某个词汇，那么其在向量中对应的位置就会被标记为1，否则为0。</p>
+<p>我们的目标是获取，垃圾邮件和非垃圾邮件的特征分别是怎么样的，也即<span class="math inline">\(p(x|y)\)</span>。<span class="math inline">\(x={\lbrace 0, 1 \rbrace}^n, y \in \lbrace 0, 1 \rbrace\)</span>，这里我们的词典中词汇数量是50000，所以<span class="math inline">\(n=50000\)</span>，特征向量<span class="math inline">\(x\)</span>会有<span class="math inline">\(2^{50000}\)</span>种可能，需要<span class="math inline">\(2^{50000}-1\)</span>个参数。</p>
+<p>我们假设<span class="math inline">\(x_i|y\)</span>之间相互独立(虽然假设各个单词的出现概率相互独立不是很合理，但是即便这样，朴素贝叶斯的效果依旧不错)，根据朴素贝叶斯，我们得到： <span class="math display">\[
+p(x_1, x_2, \ldots, x_{50000}|y)=p(x_1|y)p(x_2|y) \cdots p(x_{50000}|y)
+\]</span> 单独观察<span class="math inline">\(p(x_j|y=1)​\)</span>： <span class="math display">\[
+p(x_j|y=1) = p(x_j=1|y=1)^{x_j}p(x_j=0|y=1)^{1-x_j}
+\]</span> 给定三个参数： <span class="math display">\[
+\begin{align}
+\phi_{j|y=1} &amp;= p(x_j=1|y=1) \\\
+\phi_{j|y=0} &amp;= p(x_j=1|y=0) \\\
+\phi_y &amp;= p(y = 1)
+\end{align}
+\]</span> 故： <span class="math display">\[
+\begin{align}
+p(x_j|y=1) &amp;= \phi_{j|y=1}^{x_j}(\phi_y - \phi_{j|y=1})^{1-x_j}\\\
+p(x_j|y=0) &amp;= \phi_{j|y=0}^{x_j}(1-\phi_y + \phi_{j|y=0})^{1-x_j} \\\
+p(x_j|y) &amp;= p(x_j|y=1)^yp(x_j|y=0)^{1-y} \\\
+p(y) &amp;= \phi_y^y(1-\phi_y)^{1-y}
+\end{align}
+\]</span> 按照上个博客<a href="https://jackieanxis.github.io/blog-cs229/2018/06/29/8.%20%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5/" target="_blank" rel="noopener">8. 生成学习算法的概念</a>中所述，我们会选用联合概率分布的极大似然来导出最优解： <span class="math display">\[
+l(\phi_y,\phi_{j|y=1},\phi_{j|y=0}=\prod_{i=1}^mp(x^{(i)},y^{(i)})=\prod_{i=1}^mp(x^{(i)}|y^{(i)})p(y^{(i)})
+\]</span></p>
+<p>可以解得： <span class="math display">\[
+\begin{align}
+\phi_{j|y=1} &amp;= \frac{\sum_{i=1}^m1\lbrace x_j{(i)}=1, y^{(i)}=1 \rbrace}{\sum_{i=1}^m1\lbrace y^{(i)}=1 \rbrace}  = \frac{统计所有包含词语j的垃圾邮件的数量}{垃圾邮件的总数}\\\
+\phi_{j|y=0} &amp;= \frac{\sum_{i=1}^m1\lbrace x_j{(i)}=1, y^{(i)}=0 \rbrace}{\sum_{i=1}^m1\lbrace y^{(i)}=0 \rbrace} = \frac{统计所有包含词语j的非垃圾邮件的数量}{非垃圾邮件的总数} \\\
+\phi_y &amp;= \frac{\sum_{i=1}^m1\lbrace y^{(i)}=1 \rbrace}{m} = \frac{垃圾邮件的数量}{邮件的总数}
+\end{align}
+\]</span> 通过以上的公式，我们已经可以完全推得<span class="math inline">\(p(x_1, x_2, \ldots, x_{50000}|y)\)</span>。</p>
+<h3 id="laplace平滑">Laplace平滑</h3>
+<p>假设，训练集中，我们重来没有碰到过"<em>NIPS</em>"这个词汇，假设我们词典中包含这个词，位置是30000，也就是说： <span class="math display">\[
+\begin{align}
+p(x_{30000}=1|y=1) &amp;= 0\\\
+p(x_{30000}=0|y=1) &amp;= 0
+\end{align} \\\
+\Downarrow \\\
+p(x|y=1) =\prod_{i=1}^{50000}p(x_i|y=1)=0 \\\
+p(x|y=0) =\prod_{i=1}^{50000}p(x_i|y=0)=0
+\]</span> 故而在分类垃圾邮件时： <span class="math display">\[
+\begin{align}
+p(y=1|x) &amp;= \frac{p(x|y=1)p(y=1)}{p(x)} \\\
+&amp;=\frac{p(x|y=1)p(y=1)}{p(x|y=0)p(y=0)+p(x|y=1)p(y=1)} \\\
+&amp;= \frac{0}{0+0}
+\end{align}
+\]</span> 所以，我们提出<span class="math inline">\(p(x_{30000}=1|y=1) = 0\)</span>这样的假设不够好。</p>
+<p><em>Laplace</em>平滑就是来帮助解决这个问题的。</p>
+<p>举例而言，在计算： <span class="math display">\[
+\phi_y=p(y=1)=\frac{\text{numof(1)}}{\text{numof(0)}+\text{numof(1)}}
+\]</span> 其中，<span class="math inline">\(\text{numof(1)}\)</span>表示的是，被分类为1的训练集中数据个数。</p>
+<p>在<em>Laplace</em>平滑中，我们会采取如下策略: <span class="math display">\[
+\phi_y=p(y=1)=\frac{\text{numof(1)}+1}{\text{numof(0)}+1+\text{numof(1)}+1}
+\]</span> 比如，A球队在之前的五场比赛里面都输了，我们预测下一场比赛赢的概率： <span class="math display">\[
+p(y=1)=\frac{0+1}{0+1+5+1}=\frac{1}{7}
+\]</span> 而不是简单的认为（没有<em>Laplace</em>平滑）是0。</p>
+<p>推广而言，在多分类问题中，<span class="math inline">\(y\in\lbrace1, \ldots, k \rbrace\)</span>，那么： <span class="math display">\[
+p(y=j) = \frac{\sum_{i=1}^m1\lbrace y^{(i)} = j \rbrace+1}{m+k}
+\]</span></p>
+<h2 id="例三垃圾邮件分类2">例三：垃圾邮件分类（2）</h2>
+<p>之前的垃圾分类模型里面，我们对邮件提取的特征向量是： <span class="math display">\[
+x=[1,0,0,\ldots,1,\ldots]^T
+\]</span> 这种模型，我们称之为多元伯努利事件模型（Multivariate Bernoulli Event Model）。</p>
+<p>现在，我们换一种特征向量提取方式，将邮件的特征向量表示为： <span class="math display">\[
+x=[x_1,x_2,\ldots,x_j,\ldots]^T
+\]</span> <span class="math inline">\(x_j\)</span>表示词汇<span class="math inline">\(j\)</span>在邮件中出现的次数。上述的特征向量也就是词频向量了。这种模型，我们称为多项式事件模型（Multinomial Event Model）。</p>
+<p>对联合概率分布<span class="math inline">\(p(x,y)\)</span>进行极大似然估计，得到如下的参数： <span class="math display">\[
+\begin{align}
+\phi_{k|y=1} &amp;= p(x_j=k|y=1) = \frac{C_{x=k}+1}{C_{y=1}+n} \\\
+\phi_{k|y=0} &amp;=p(x_j=k|y=0) = \frac{C_{x=k}+1}{C_{y=0}+n} \\\
+\phi_{y} &amp;= p(y=1) = \frac{C_{y=1}+1}{C_{y=1}+1+C_{y=0}+1}
+\end{align}
+\]</span> 其中：</p>
+<p><span class="math inline">\(n\)</span>表示词典中词汇的数量，也就是特征向量的长度； <span class="math display">\[
+C_{x=k}=\sum_{i=1}^m(1\lbrace y^{(i)}=1 \rbrace \sum_{j=1}^{n_i}1 \lbrace x_j^{(i)} = k \rbrace)
+\]</span> 表示在训练集中，所有垃圾邮件中词汇<span class="math inline">\(k\)</span>出现的次数（并不是邮件的次数，而是词汇的次数）； <span class="math display">\[
+C_{y=1}=\sum_{i=1}^n(1\lbrace y^{(i)} = 1 \rbrace \cdot n_i)
+\]</span> 表示训练集中垃圾邮件的所有词汇总长； <span class="math display">\[
+C_{y=0}=\sum_{i=1}^n(1\lbrace y^{(i)} = 0 \rbrace \cdot n_i)
+\]</span> 表示训练集中非垃圾邮件的所有词汇总长；</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    SVM（一）概念
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">生成学习算法的概念</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

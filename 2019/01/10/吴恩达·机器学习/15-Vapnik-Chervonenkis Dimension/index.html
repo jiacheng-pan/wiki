@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Vapnik–Chervonenkis dimension | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,VC维,特征选择">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="延续上节课的内容。 给定\(|\cal H| = k\)，给定\(\delta, \gamma\)，为了保证： \[ \varepsilon({\hat h}) \leq \varepsilon(h) + 2\gamma \] 的概率不小于\(1-\delta\)，那么\(m\)需要满足： \[ m \geq \frac{1}{2\gamma^2}\log \frac{2k}{\delta} =">
+<meta name="keywords" content="机器学习,VC维,特征选择">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vapnik–Chervonenkis dimension">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="延续上节课的内容。 给定\(|\cal H| = k\)，给定\(\delta, \gamma\)，为了保证： \[ \varepsilon({\hat h}) \leq \varepsilon(h) + 2\gamma \] 的概率不小于\(1-\delta\)，那么\(m\)需要满足： \[ m \geq \frac{1}{2\gamma^2}\log \frac{2k}{\delta} =">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111094049430.png">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111094649618.png">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111095306079.png">
+<meta property="og:updated_time" content="2019-01-20T14:21:01.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vapnik–Chervonenkis dimension">
+<meta name="twitter:description" content="延续上节课的内容。 给定\(|\cal H| = k\)，给定\(\delta, \gamma\)，为了保证： \[ \varepsilon({\hat h}) \leq \varepsilon(h) + 2\gamma \] 的概率不小于\(1-\delta\)，那么\(m\)需要满足： \[ m \geq \frac{1}{2\gamma^2}\log \frac{2k}{\delta} =">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111094049430.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file active"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/VC维/">VC维</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/特征选择/">特征选择</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">
+            <time datetime="2019-01-10T05:53:00.000Z" itemprop="datePublished">2019-01-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Vapnik–Chervonenkis dimension
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>延续上节课的内容。</p>
+<p>给定<span class="math inline">\(|\cal H| = k\)</span>，给定<span class="math inline">\(\delta, \gamma\)</span>，为了保证： <span class="math display">\[
+\varepsilon({\hat h}) \leq \varepsilon(h) + 2\gamma
+\]</span> 的概率不小于<span class="math inline">\(1-\delta\)</span>，那么<span class="math inline">\(m\)</span>需要满足： <span class="math display">\[
+m \geq \frac{1}{2\gamma^2}\log \frac{2k}{\delta} = O(\frac{1}{\gamma^2}\log \frac{k}{\delta})
+\]</span></p>
+<p>假如<span class="math inline">\(\cal H\)</span>是以<span class="math inline">\(d\)</span>个实数为参数的(比如为了解决<em>n</em>个特征的分类问题，<em>d</em>就等于<em>n+1</em>)，而在计算机中，实数多以64位浮点数保存，d个实数就需要64d位来存储，那么<span class="math inline">\(\cal H\)</span>的整个假设空间大小就为<span class="math inline">\(2^{64d}\)</span>，也即<span class="math inline">\(k=2^{64d}\)</span>，那么： <span class="math display">\[
+m \geq O(\frac{1}{\gamma^2}\log \frac{k}{\delta}) = O(\frac{d}{\gamma^2}\log \frac{1}{\delta})
+\]</span> 最直观的解释就是<span class="math inline">\(m\)</span>与假设类的参数数量几乎是成正比的。</p>
+<hr>
+<p>定义<strong>Shatter（分散）</strong>：给定一个由<span class="math inline">\(d\)</span>个点构成的集合：<span class="math inline">\(S=\lbrace x^{(1)}, \ldots, x^{(d)} \rbrace\)</span>，我们说一个假设类<span class="math inline">\(\cal H\)</span>能够<strong>分散(shatter)</strong>一个集合<span class="math inline">\(S\)</span>，如果<span class="math inline">\(\cal H\)</span>能够实现对<span class="math inline">\(S\)</span>的任意一种标记方式，也即，对<span class="math inline">\(S\)</span>的任意一种标记方式，我们都可以从<span class="math inline">\(\cal H\)</span>中找到对应的假设来进行分割。 举例而言，如果<span class="math inline">\({\cal H} = \lbrace \text{linear classification in 2D} \rbrace\)</span>(二维线性分类器的集合)，对于二维平面上的三个点，有8种标记方式：</p>
+<figure>
+<img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111094049430.png" alt="image-20190111094049430"><figcaption>image-20190111094049430</figcaption>
+</figure>
+<p>那么，蓝线所代表的线性分类器，都能完成对它们的标记，所以我们称<span class="math inline">\(\cal H\)</span>能够分散平面上三个点所构成的集合。但是对于平面上四个点，就有存在以下这种情况，没有任何的线性分类器能够实现这种标记：</p>
+<figure>
+<img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111094649618.png" alt="image-20190111094649618"><figcaption>image-20190111094649618</figcaption>
+</figure>
+<hr>
+<p>定义<strong>Vapnik-Chervonenkis dimension（VC维）</strong>：假设集<span class="math inline">\(\cal H\)</span>的<strong>VC维</strong>，写成<span class="math inline">\(VC({\cal H})\)</span>，指的是能够被<span class="math inline">\(\cal H\)</span>分散的最大集合的大小。 举例而言，如果<span class="math inline">\(\cal H\)</span>是所有二维线性分类器构成的集合，那么<span class="math inline">\(VC(\cal H) = 3\)</span>。当然并不是说<span class="math inline">\(\cal H\)</span>要能分散所有三个点构成的集合，只要有某个三个点构成的集合能被<span class="math inline">\(\cal H\)</span>分散即可，比如下面这种标记方式，<span class="math inline">\(\cal H\)</span>就无法实现，但是我们还是称<span class="math inline">\(VC(\cal H) = 3\)</span>。</p>
+<figure>
+<img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-1-11/image-20190111095306079.png" alt="image-20190111095306079"><figcaption>image-20190111095306079</figcaption>
+</figure>
+<p>有一个推论：</p>
+<p><span class="math inline">\(VC({\text{linear classification of n D}}) = n + 1\)</span></p>
+<hr>
+<p>定理：给定假设集合<span class="math inline">\(\cal H\)</span>，令<span class="math inline">\(VC({\cal H})=d\)</span>，那么，对于任意的<span class="math inline">\(h \in {\cal H}\)</span>： <span class="math display">\[
+|\varepsilon(h)-{\hat \varepsilon}(h)| \leq O(\sqrt{\frac{d}{m} \log \frac{m}{d} + \frac{1}{m} \log \frac{1}{\delta}})
+\]</span> 的概率不小于<span class="math inline">\(1 - \delta\)</span>，以及 <span class="math display">\[
+\varepsilon({\hat h}) \leq \varepsilon(h^\ast) + 2 \gamma, \gamma = O(\sqrt{\frac{d}{m} \log \frac{m}{d} + \frac{1}{m} \log \frac{1}{\delta}})
+\]</span> 的概率不小于<span class="math inline">\(1-\delta​\)</span>。</p>
+<p>引理：为了保证<span class="math inline">\(\varepsilon({\hat h}) \leq \varepsilon(h ^ \ast) + 2 \gamma\)</span>至少在<span class="math inline">\(1 - \delta\)</span>的概率下成立，应该满足： <span class="math display">\[
+m = O_{\gamma, \delta}(d)
+\]</span> <span class="math inline">\(O_{\gamma, \delta}(d)\)</span>指的是，在固定<span class="math inline">\(\gamma, \delta\)</span>的情况下，与<span class="math inline">\(d\)</span>线性相关。</p>
+<p>也即，<span class="math inline">\(m\)</span>必须与<span class="math inline">\(\cal H\)</span>的VC维保持一致，也可以这么理解，为了使泛化误差和训练误差近似，训练样本数目必须和模型的参数数量成正比。</p>
+<hr>
+<p>在SVM中，给定数据集，如果我们只考虑半径R以内的点，以及间隔至少为<span class="math inline">\(\gamma\)</span>的线性分类器构成的假设类，那么： <span class="math display">\[
+VC({\cal H}) \leq \lceil \frac{R^2}{4\gamma^2} \rceil + 1
+\]</span></p>
+<p>也就说明，<span class="math inline">\(\cal H​\)</span> 的VC维上限，并不依赖于数据集中点<span class="math inline">\(x​\)</span>的维度，换句话说，虽然点可能位于无限维的空间中，但是如果只考虑那些具有较大函数间隔的分类器所组成的假设类，那么VC维就存在上界。</p>
+<p>所以SVM会自动尝试找到一个具有较小VC维的假设类，所以它不会过拟合（模型参数不会过大）</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    模型选择和特征选择
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">经验风险最小化</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

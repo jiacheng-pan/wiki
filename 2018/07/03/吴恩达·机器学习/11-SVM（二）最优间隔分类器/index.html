@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>SVM（二）最优间隔分类器 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="机器学习,SVM,最优间隔分类器,拉格朗日乘子法">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+<meta name="keywords" content="机器学习,SVM,最优间隔分类器,拉格朗日乘子法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM（二）最优间隔分类器">
+<meta property="og:url" content="http://jiacheng-pan.github.io/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-4/9336603.jpg">
+<meta property="og:updated_time" content="2019-01-20T14:21:01.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVM（二）最优间隔分类器">
+<meta name="twitter:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+<meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-4/9336603.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/wiki/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file active"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-吴恩达·机器学习/11-SVM（二）最优间隔分类器" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/SVM/">SVM</a>, <a class="tag-link" href="/wiki/tags/拉格朗日乘子法/">拉格朗日乘子法</a>, <a class="tag-link" href="/wiki/tags/最优间隔分类器/">最优间隔分类器</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">
+            <time datetime="2018-07-03T08:27:00.000Z" itemprop="datePublished">2018-07-03</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            SVM（二）最优间隔分类器
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p><strong>最优间隔分类器</strong>（<em>Optimal Margin Classifier</em>）。其目标是使得最小几何间隔最大化（<a href="https://jackieanxis.github.io/blog-cs229/2018/07/02/10.%20SVM%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5/" target="_blank" rel="noopener">10. SVM（一）概念</a>）： <span class="math display">\[
+\text{目标(1):} \\\
+\max_{w, b} \gamma \\\
+\text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i=1,\ldots,n
+\]</span> 我们知道，<span class="math inline">\(\hat{\gamma} = \frac{\gamma}{||w||}\)</span>，所以上面的目标可以等同于： <span class="math display">\[
+\text{目标(2):} \\\
+\max_{w, b} \frac{\hat{\gamma}}{||w||} \\\
+\text{ s.t. }y^{(i)} \cdot (w^T \cdot x^{(i)}+b) \geq \hat{\gamma}, i=1,\ldots,n
+\]</span> 为了最大化上述值，我们有两种策略。</p>
+<ol type="1">
+<li>增大<span class="math inline">\(\hat{\gamma}\)</span></li>
+<li>减小<span class="math inline">\(||w||\)</span></li>
+</ol>
+<p>针对第一种可能，我们要证明其无效性。假如，我们增大<span class="math inline">\(\hat{\gamma}\)</span>到<span class="math inline">\({\hat{\gamma}}_1 := \lambda {\hat{\gamma}}\)</span>，因为<span class="math inline">\(\hat{\gamma}=y(w^Tx+b)\)</span>，可以视作<span class="math inline">\(w_1:=\lambda w, b_1 = \lambda b\)</span>。所以，此时 <span class="math display">\[
+\frac{\hat{\gamma_1}}{||w_1||}=\frac{\lambda \hat{\gamma}}{||\lambda w||} = \frac{\hat{\gamma}}{||w||} \\\
+\]</span> 没有发生任何改变，所以第一条策略不可行。于是，我们可以固定<span class="math inline">\(\hat{\gamma}=1\)</span></p>
+<p>此时，上述目标(2)可以表述成： <span class="math display">\[
+\text{目标(3):} \\\
+\min_{w, b} \frac{1}{2}||w||^2 \\\
+\text{ s.t. }y^{(i)} \cdot (w^T \cdot x^{(i)}+b) \geq 1, i=1,\ldots,n
+\]</span></p>
+<p>因为最小化<span class="math inline">\(||w||\)</span>和最小化<span class="math inline">\(\frac{1}{2}||w||^2\)</span>是一致的。</p>
+<h2 id="拉格朗日乘子法lagrange-multiplier">拉格朗日乘子法（Lagrange Multiplier）</h2>
+<p>为了解决上述的<strong>凸优化问题</strong>，我们引入拉格朗日乘子法<em>Lagrange Multiplier</em>来解决这个问题。</p>
+<p>我们首先来看看<strong>凸优化问题</strong>的定义： <span class="math display">\[
+\min_wf(w) \\\
+\text{s.t. }g_i(w) \leq 0, h_i(w) =0
+\]</span> 构建拉格朗日乘子： <span class="math display">\[
+{\cal L}(w, \alpha, \beta) = f(w)+\sum_i\alpha_ig_i(w)+\sum_i\beta_ih_i(w)
+\]</span> 定义： <span class="math display">\[
+\theta_p(w) = \max_{\alpha_i&gt;0, \beta}{\cal L}(w, \alpha, \beta)
+\]</span> 观察<span class="math inline">\(\theta_p(w)\)</span>：</p>
+<ol type="1">
+<li>如果<span class="math inline">\(g_i(w)&gt;0\)</span>，那么<span class="math inline">\(\theta_p(w)=+\infty\)</span>（因为<span class="math inline">\(\alpha\)</span>可以取任意大值）。</li>
+<li>如果<span class="math inline">\(h_i(w) \neq 0\)</span>，那么<span class="math inline">\(\theta_p(w)=+\infty\)</span>（因为<span class="math inline">\(\beta\)</span>可以取<span class="math inline">\(+\infty/-\infty\)</span>）。</li>
+</ol>
+<p>所以，在满足约束的情况下，<span class="math inline">\(\theta_p(w)=f(w)\)</span>，<span class="math inline">\(\min_w \theta_p(w)=\min_w f(w)\)</span>，因为使得<span class="math inline">\({\cal L}(w, \alpha, \beta)\)</span>最大的方法，就是其他所有项全是0。那么，可以得出这样的结论： <span class="math display">\[
+\theta_p(w)=\begin{cases}
+f(w), &amp;\text{满足约束} \\\
+\infty, &amp;\text{不满足约束}
+\end{cases}
+\]</span> 因此，在满足条件的情况下，<span class="math inline">\(\min_w\theta_p(w)\)</span>等价于<span class="math inline">\(min_wf(w)\)</span>。</p>
+<p>我们将最优间隔分类器的目标重新表示一下： <span class="math display">\[
+p^\ast =\min_{w, b}\max_\alpha {\cal L(w, \alpha, b)} \\\
+{\cal L}(w, \alpha, b) = \frac{1}{2}||w||^2+\sum_i\alpha_i(1-y^{(i)}(w^T x^{(i)}+b))
+\]</span> 其中，直接忽略了<span class="math inline">\(h_i(w)=0\)</span>的约束，而<span class="math inline">\(g_i(w,b)=1-y^{(i)}(w^Tx^{(i)}+b) \leq 0, f(w)=\frac{1}{2}||w||^2\)</span></p>
+<h2 id="对偶问题dual-problem">对偶问题（Dual Problem）</h2>
+<p>一般来说，将原始问题转化成对偶问题来求解。一是因为对偶问题往往比较容易求解，二是因为对偶问题引入了核函数，方便推广到非线性分类的情况。</p>
+<p>我们看到，之前的原始问题，是 <span class="math display">\[
+p^\ast =\min_{w, b}\max_\alpha {\cal L}(w, \alpha, b)
+\]</span></p>
+<p>那么，定义其对偶问题：</p>
+<p><span class="math display">\[
+l^\ast =\max_\alpha\min_{w,b}{\cal L}(w, \alpha, b)
+\]</span></p>
+<p>接下去，我们求解对偶问题：</p>
+<p>先求解<span class="math inline">\(\min_{w,b}{\cal L}(w, \alpha, b)\)</span>：</p>
+<p>分别求偏导，使其等于0，导出最小值： <span class="math display">\[
+\begin{align}
+&amp; \nabla_w{\cal L}(w, \alpha, b) =w-\sum_{i=1}\alpha_iy^{(i)}x^{(i)}=0 \\\
+&amp; \nabla_b{\cal L}(w, \alpha, b) =\sum_{i=1}\alpha_iy^{(i)}=0
+\end{align}
+\]</span></p>
+<p>得到：</p>
+<p><span class="math display">\[
+w =\sum_{i=1}\alpha_iy^{(i)}x^{(i)} \\\
+\sum_{i=1}\alpha_iy^{(i)} = 0
+\]</span></p>
+<p>代入<span class="math inline">\({\cal L}(w, \alpha, b)\)</span>，就可以得到最小值：</p>
+<p><span class="math display">\[
+\begin{align}
+{\cal L}(w, \alpha, b) &amp;= \frac{1}{2}||w||^2+\sum_i\alpha_i(1-y^{(i)}(w^T x^{(i)}+b)) \\\
+\min_{w, b}{\cal L}(w, \alpha, b) &amp;=\underbrace{\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j)}_{W(\alpha)}
+\end{align}
+\]</span></p>
+<p>于是，我们的对偶问题简化到了对<span class="math inline">\(W(\alpha)\)</span>最大化： <span class="math display">\[
+\max_\alpha W(\alpha) \\\
+\text{s.t. }\alpha_i \geq 0, \sum_iy_i\alpha_i=0
+\]</span></p>
+<p>假设，我们解得的对偶问题的解为：<span class="math inline">\(\alpha^\ast =[\alpha_1^\ast ,\alpha_2^\ast , \ldots, \alpha_m^\ast ]\)</span>，那么最终原始问题的解可以表示成：</p>
+<p><span class="math display">\[
+w^\ast =\sum_{i=1}\alpha_i^\ast y^{(i)}x^{(i)}
+\]</span></p>
+<p>在原始问题中，还有<span class="math inline">\(b\)</span>未得到解决。我们先来观察一下约束项： <span class="math display">\[
+g_i(w,b)=1-y{(i)}(w^Tx^{(i)}+b) \leq 0
+\]</span> <img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-4/9336603.jpg"></p>
+<p>我们知道，在数据中，只有少数的几个数据点，他们的函数距离为1（最小），也即<span class="math inline">\(g_i(w,b)=0\)</span>，如图所示。</p>
+<p>在整个数据集中，只有这些数据点对约束超平面起了作用，这些数据点被称为支持向量（<em>support vector</em>），其对应的<span class="math inline">\(\alpha_i^\ast \neq 0\)</span>，而其他不是支持向量的数据点，没有对约束超平面起作用，其<span class="math inline">\(\alpha_i^\ast =0\)</span>。</p>
+<p>此时，我们已经得到了$w<sup><span class="math inline">\(，而\)</span>b</sup><span class="math inline">\(的计算如下，找到一个数据点，其\)</span>_j^0$(也就是支持向量，其函数间隔为1)，我们就能得到：</p>
+<p><span class="math display">\[
+y^{(j)}(w^{*T}x^{(j)}+b^\ast )=1
+\Rightarrow
+b^\ast =y^{(j)}-\sum_{i=1}\alpha_i^\ast y^{(i)}(x^{(i)} \cdot x^{(j)})
+\]</span></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    SVM（三）核函数
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">SVM（一）概念</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>
