@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
 <meta property="og:description" content="生成学习算法，英文为Generative Learning Algorithm。 我们之前看到的都是判别学习算法（Discriminative Learning Algorithm）。判别学习算法可以分成两种：  学得\(p(y|x)\)，比如之前的线性模型 学得一个假设\(h_\theta (x) = \lbrace 0, 1 \rbrace\)，比如二分类问题  上面都是根据特征\(x\)，来">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-20T14:20:52.652Z">
+<meta property="og:updated_time" content="2019-01-21T07:28:45.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成学习算法的概念">
 <meta name="twitter:description" content="生成学习算法，英文为Generative Learning Algorithm。 我们之前看到的都是判别学习算法（Discriminative Learning Algorithm）。判别学习算法可以分成两种：  学得\(p(y|x)\)，比如之前的线性模型 学得一个假设\(h_\theta (x) = \lbrace 0, 1 \rbrace\)，比如二分类问题  上面都是根据特征\(x\)，来">
@@ -66,7 +66,7 @@
             </a>
             <nav id="main-nav">
                 
-                    <a class="main-nav-link" href="/wiki/">首页</a>
+                    <a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a>
                 
                     <a class="main-nav-link" href="/wiki/archives">归档</a>
                 
@@ -121,7 +121,7 @@
         <table class="menu outer">
             <tr>
                 
-                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                    <td><a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a></td>
                 
                     <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
                 
@@ -337,7 +337,7 @@ l(\phi, \mu_0, \mu_1, \Sigma) &amp;= log\prod_{i=1}^mp(x^{(i)}, (y^{(i)})) \\\
 &amp;= log\prod_{i=1}^mp(x^{(i)}| (y^{(i)}))p(y^{(i)})
 \end{align}
 \]</span></p>
-<p>对比一下之前<a href="https://jackieanxis.github.io/blog-cs229/2018/06/05/5.%20%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">二分类问题</a>中的对数似然估计函数： <span class="math display">\[
+<p>对比一下之前二分类问题中的对数似然估计函数： <span class="math display">\[
 l(\theta) = \sum_{i=1}^mlog(P(y^{(i)}|x^{(i)};\theta))
 \]</span> 这里，我们使用了联合概率（<em>joint likelihood</em>）: <span class="math inline">\(p(x^{(i)}, (y^{(i)}))\)</span>，而在之前的判别模型里，我们用的是条件概率（<em>conditional likelihood</em>）: <span class="math inline">\(P(y^{(i)}|x^{(i)};\theta)\)</span>。因为，在判别模型中，特征<span class="math inline">\(x\)</span>是给定的，所以用条件概率来进行极大似然估计；而在生成模型中，特征<span class="math inline">\(x\)</span>不给定，所以需要用联合概率来进行极大似然估计。</p>
 <p>然后，我们进行极大似然估计，得到： <span class="math display">\[

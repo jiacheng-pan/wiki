@@ -9,19 +9,19 @@
         <meta name="keywords" content="机器学习,SVM,最优间隔分类器,拉格朗日乘子法">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+    <meta name="description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i">
 <meta name="keywords" content="机器学习,SVM,最优间隔分类器,拉格朗日乘子法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM（二）最优间隔分类器">
 <meta property="og:url" content="https://jiacheng-pan.github.io/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/index.html">
 <meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
-<meta property="og:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+<meta property="og:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-4/9336603.jpg">
-<meta property="og:updated_time" content="2019-01-20T14:21:01.716Z">
+<meta property="og:updated_time" content="2019-01-21T07:29:06.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM（二）最优间隔分类器">
-<meta name="twitter:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（10. SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamm">
+<meta name="twitter:description" content="最优间隔分类器（Optimal Margin Classifier）。其目标是使得最小几何间隔最大化（SVM（一）概念）： \[ \text{目标(1):} \\\ \max_{w, b} \gamma \\\ \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i">
 <meta name="twitter:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-4/9336603.jpg">
     
 
@@ -68,7 +68,7 @@
             </a>
             <nav id="main-nav">
                 
-                    <a class="main-nav-link" href="/wiki/">首页</a>
+                    <a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a>
                 
                     <a class="main-nav-link" href="/wiki/archives">归档</a>
                 
@@ -123,7 +123,7 @@
         <table class="menu outer">
             <tr>
                 
-                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                    <td><a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a></td>
                 
                     <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
                 
@@ -303,7 +303,7 @@
             
         
         
-            <p><strong>最优间隔分类器</strong>（<em>Optimal Margin Classifier</em>）。其目标是使得最小几何间隔最大化（<a href="https://jackieanxis.github.io/blog-cs229/2018/07/02/10.%20SVM%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5/" target="_blank" rel="noopener">10. SVM（一）概念</a>）： <span class="math display">\[
+            <p><strong>最优间隔分类器</strong>（<em>Optimal Margin Classifier</em>）。其目标是使得最小几何间隔最大化（SVM（一）概念）： <span class="math display">\[
 \text{目标(1):} \\\
 \max_{w, b} \gamma \\\
 \text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i=1,\ldots,n

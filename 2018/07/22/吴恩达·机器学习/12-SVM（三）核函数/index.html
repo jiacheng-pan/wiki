@@ -18,7 +18,7 @@
 <meta property="og:description" content="在SVM(二)中，我们看到了如下的表示形式： \[ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) \] 这里，内积\((x_i \cdot x_j)\)就是最简单的核函数的形式。一般核函数会被写成\(\langle x^{(i)}, x^{(j)}">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-23/7489488.jpg">
-<meta property="og:updated_time" content="2019-01-20T14:21:01.717Z">
+<meta property="og:updated_time" content="2019-01-21T07:29:17.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM（三）核函数">
 <meta name="twitter:description" content="在SVM(二)中，我们看到了如下的表示形式： \[ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j) \] 这里，内积\((x_i \cdot x_j)\)就是最简单的核函数的形式。一般核函数会被写成\(\langle x^{(i)}, x^{(j)}">
@@ -68,7 +68,7 @@
             </a>
             <nav id="main-nav">
                 
-                    <a class="main-nav-link" href="/wiki/">首页</a>
+                    <a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a>
                 
                     <a class="main-nav-link" href="/wiki/archives">归档</a>
                 
@@ -123,7 +123,7 @@
         <table class="menu outer">
             <tr>
                 
-                    <td><a class="main-nav-link" href="/wiki/">首页</a></td>
+                    <td><a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a></td>
                 
                     <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
                 
@@ -306,7 +306,7 @@
             <p>在SVM(二)中，我们看到了如下的表示形式： <span class="math display">\[
 W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j)
 \]</span> 这里，内积<span class="math inline">\((x_i \cdot x_j)\)</span>就是最简单的核函数的形式。一般核函数会被写成<span class="math inline">\(\langle x^{(i)}, x^{(j)} \rangle\)</span>的形式。</p>
-<p>有时候，我们会将一些特征转换到高维空间上，就像我们在之前的<a href="https://jackieanxis.github.io/blog-cs229/2018/06/04/3.%20%E8%BF%87%E6%8B%9F%E5%90%88&amp;%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/" target="_blank" rel="noopener">3. 过拟合&amp;局部加权回归</a>中提到的，比如特征<span class="math inline">\(x\)</span>表示的是房屋面积，我们需要预测房子是否会在6个月内被卖出，我们有时候会将这个特征映射成如下的形式： <span class="math display">\[
+<p>有时候，我们会将一些特征转换到高维空间上，就像我们在之前的过拟合&amp;局部加权回归中提到的，比如特征<span class="math inline">\(x\)</span>表示的是房屋面积，我们需要预测房子是否会在6个月内被卖出，我们有时候会将这个特征映射成如下的形式： <span class="math display">\[
 x \rightarrow \begin{bmatrix}
 x \\\
 x^2 \\\
