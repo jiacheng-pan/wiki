@@ -86,7 +86,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -105,10 +105,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/wiki/',
@@ -139,7 +139,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
     </div>
 
                 </td>
@@ -156,7 +156,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>Categorias</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -166,6 +166,15 @@
         
         
          <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            GraphKnowledge.wiki
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/矩阵相关的概念/">4: 矩阵相关的概念</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
@@ -397,7 +406,7 @@
 <nav id="article-nav">
     
         <a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">Más nuevo</strong>
             <div class="article-nav-title">
                 
                     线性回归

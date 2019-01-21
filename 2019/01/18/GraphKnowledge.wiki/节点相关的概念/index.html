@@ -3,19 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>Etiqueta: softmax | Jiacheng Pan&#39;s Wiki</title>
+    <title>节点相关的概念 | Jiacheng Pan&#39;s Wiki</title>
     
     
-        <meta name="keywords" content="Jiacheng Pan&#39;s Wiki">
+        <meta name="keywords" content="图,graph">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Jiacheng Pan&#39;s Wiki">
-<meta property="og:url" content="https://jiacheng-pan.github.io/wiki/tags/softmax/index.html">
+    <meta name="description" content="degree 度 一个顶点的度（degree）指与该顶点关联的边的数目。当边有权重时，就是所有边的权重和。记做\(deg(v)\)。 在有向图中，还有出度（out-degree）和入度（in-degree）的概念。 出度（out-degree）指以该顶点为起点的边的权重和，入度（in-degree）指的是以该顶点为终点的边的权重和。">
+<meta name="keywords" content="图,graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="节点相关的概念">
+<meta property="og:url" content="https://jiacheng-pan.github.io/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/index.html">
 <meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="degree 度 一个顶点的度（degree）指与该顶点关联的边的数目。当边有权重时，就是所有边的权重和。记做\(deg(v)\)。 在有向图中，还有出度（out-degree）和入度（in-degree）的概念。 出度（out-degree）指以该顶点为起点的边的权重和，入度（in-degree）指的是以该顶点为终点的边的权重和。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-21T07:55:10.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jiacheng Pan&#39;s Wiki">
+<meta name="twitter:title" content="节点相关的概念">
+<meta name="twitter:description" content="degree 度 一个顶点的度（degree）指与该顶点关联的边的数目。当边有权重时，就是所有边的权重和。记做\(deg(v)\)。 在有向图中，还有出度（out-degree）和入度（in-degree）的概念。 出度（out-degree）指以该顶点为起点的边的权重和，入度（in-degree）指的是以该顶点为终点的边的权重和。">
     
 
     
@@ -156,13 +161,13 @@
         
         
          <ul class="unstyled" id="tree"> 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             GraphKnowledge.wiki
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/矩阵相关的概念/">4: 矩阵相关的概念</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/Home/">1: Introduction</a></li>  <li class="file active"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/矩阵相关的概念/">4: 矩阵相关的概念</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -244,50 +249,114 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#softmax</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-GraphKnowledge.wiki/节点相关的概念" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">广义线性模型</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/GraphKnowledge-wiki/">GraphKnowledge.wiki</a>
+    </div>
 
-                <div class="article-meta">
-                    
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/graph/">graph</a>, <a class="tag-link" href="/wiki/tags/图/">图</a>
+    </div>
+
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">
-            <time datetime="2018-06-09T08:29:00.000Z" itemprop="datePublished">2018-06-09</time>
+        <a href="/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/">
+            <time datetime="2019-01-18T05:54:00.000Z" itemprop="datePublished">2019-01-18</time>
         </a>
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/softmax/">softmax</a>, <a class="tag-link" href="/wiki/tags/指数分布族/">指数分布族</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/GraphKnowledge.wiki/节点相关的概念.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/GraphKnowledge.wiki/节点相关的概念.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/GraphKnowledge.wiki/节点相关的概念.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
     
-</div>
+        <h1 class="article-title" itemprop="name">
+            节点相关的概念
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h3 id="degree-度">degree 度</h3>
+<p>一个顶点的度（degree）指与该顶点关联的边的数目。当边有权重时，就是所有边的权重和。记做<span class="math inline">\(deg(v)\)</span>。</p>
+<p>在有向图中，还有出度（out-degree）和入度（in-degree）的概念。</p>
+<p>出度（out-degree）指以该顶点为起点的边的权重和，入度（in-degree）指的是以该顶点为终点的边的权重和。</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2019/01/18/GraphKnowledge.wiki/结构相关的概念/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    结构相关的概念
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2019/01/18/GraphKnowledge.wiki/Home/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Introduction</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
