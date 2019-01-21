@@ -5,9 +5,9 @@
   
   <link href="/wiki/atom.xml" rel="self"/>
   
-  <link href="http://jiacheng-pan.github.io/wiki/"/>
+  <link href="https://jiacheng-pan.github.io/wiki/"/>
   <updated>2019-01-20T14:21:01.748Z</updated>
-  <id>http://jiacheng-pan.github.io/wiki/</id>
+  <id>https://jiacheng-pan.github.io/wiki/</id>
   
   <author>
     <name>Jiacheng Pan</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>模型选择和特征选择</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2019/01/18/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/16-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%92%8C%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2019/01/18/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/16-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%92%8C%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/</id>
     <published>2019-01-18T05:53:00.000Z</published>
     <updated>2019-01-20T14:21:01.748Z</updated>
     
@@ -37,21 +37,21 @@
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="特征选择" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
+      <category term="特征选择" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
     
-      <category term="模型选择" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/"/>
+      <category term="模型选择" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9/"/>
     
   </entry>
   
   <entry>
     <title>Vapnik–Chervonenkis dimension</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2019/01/10/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/15-Vapnik-Chervonenkis%20Dimension/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2019/01/10/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/15-Vapnik-Chervonenkis%20Dimension/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/</id>
     <published>2019-01-10T05:53:00.000Z</published>
     <updated>2019-01-20T14:21:01.717Z</updated>
     
@@ -67,21 +67,21 @@
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="VC维" scheme="http://jiacheng-pan.github.io/wiki/tags/VC%E7%BB%B4/"/>
+      <category term="VC维" scheme="https://jiacheng-pan.github.io/wiki/tags/VC%E7%BB%B4/"/>
     
-      <category term="特征选择" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
+      <category term="特征选择" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/"/>
     
   </entry>
   
   <entry>
     <title>经验风险最小化</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2019/01/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/14-%E7%BB%8F%E9%AA%8C%E9%A3%8E%E9%99%A9%E6%9C%80%E5%B0%8F%E5%8C%96/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2019/01/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/14-%E7%BB%8F%E9%AA%8C%E9%A3%8E%E9%99%A9%E6%9C%80%E5%B0%8F%E5%8C%96/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/</id>
     <published>2019-01-05T05:53:00.000Z</published>
     <updated>2019-01-20T14:21:01.717Z</updated>
     
@@ -99,21 +99,21 @@ g(z) = 1\lbrace z \geq 0 \rbrace
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="ERM" scheme="http://jiacheng-pan.github.io/wiki/tags/ERM/"/>
+      <category term="ERM" scheme="https://jiacheng-pan.github.io/wiki/tags/ERM/"/>
     
-      <category term="经验风险" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%BB%8F%E9%AA%8C%E9%A3%8E%E9%99%A9/"/>
+      <category term="经验风险" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%BB%8F%E9%AA%8C%E9%A3%8E%E9%99%A9/"/>
     
   </entry>
   
   <entry>
     <title>SVM（四）非线性决策边界</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/07/25/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/13-SVM%EF%BC%88%E5%9B%9B%EF%BC%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/07/25/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/13-SVM%EF%BC%88%E5%9B%9B%EF%BC%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/</id>
     <published>2018-07-25T05:53:00.000Z</published>
     <updated>2019-01-20T14:21:01.716Z</updated>
     
@@ -129,23 +129,23 @@ g(z) = 1\lbrace z \geq 0 \rbrace
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="SVM" scheme="http://jiacheng-pan.github.io/wiki/tags/SVM/"/>
+      <category term="SVM" scheme="https://jiacheng-pan.github.io/wiki/tags/SVM/"/>
     
-      <category term="非线性决策边界" scheme="http://jiacheng-pan.github.io/wiki/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C/"/>
+      <category term="非线性决策边界" scheme="https://jiacheng-pan.github.io/wiki/tags/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C/"/>
     
-      <category term="坐标上升法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E5%9D%90%E6%A0%87%E4%B8%8A%E5%8D%87%E6%B3%95/"/>
+      <category term="坐标上升法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E5%9D%90%E6%A0%87%E4%B8%8A%E5%8D%87%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>SVM（三）核函数</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/07/22/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/12-SVM%EF%BC%88%E4%B8%89%EF%BC%89%E6%A0%B8%E5%87%BD%E6%95%B0/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/07/22/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/12-SVM%EF%BC%88%E4%B8%89%EF%BC%89%E6%A0%B8%E5%87%BD%E6%95%B0/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/</id>
     <published>2018-07-22T13:33:00.000Z</published>
     <updated>2019-01-20T14:21:01.717Z</updated>
     
@@ -161,21 +161,21 @@ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="SVM" scheme="http://jiacheng-pan.github.io/wiki/tags/SVM/"/>
+      <category term="SVM" scheme="https://jiacheng-pan.github.io/wiki/tags/SVM/"/>
     
-      <category term="核函数" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%A0%B8%E5%87%BD%E6%95%B0/"/>
+      <category term="核函数" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%A0%B8%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
   <entry>
     <title>SVM（二）最优间隔分类器</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/07/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/11-SVM%EF%BC%88%E4%BA%8C%EF%BC%89%E6%9C%80%E4%BC%98%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/07/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/11-SVM%EF%BC%88%E4%BA%8C%EF%BC%89%E6%9C%80%E4%BC%98%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/</id>
     <published>2018-07-03T08:27:00.000Z</published>
     <updated>2019-01-20T14:21:01.716Z</updated>
     
@@ -190,23 +190,23 @@ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="SVM" scheme="http://jiacheng-pan.github.io/wiki/tags/SVM/"/>
+      <category term="SVM" scheme="https://jiacheng-pan.github.io/wiki/tags/SVM/"/>
     
-      <category term="最优间隔分类器" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%80%E4%BC%98%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8/"/>
+      <category term="最优间隔分类器" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%80%E4%BC%98%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8/"/>
     
-      <category term="拉格朗日乘子法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/"/>
+      <category term="拉格朗日乘子法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>SVM（一）概念</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/07/02/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/10-SVM%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/07/02/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/10-SVM%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E5%BF%B5/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/</id>
     <published>2018-07-02T08:27:00.000Z</published>
     <updated>2019-01-20T14:21:01.715Z</updated>
     
@@ -222,23 +222,23 @@ W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="SVM" scheme="http://jiacheng-pan.github.io/wiki/tags/SVM/"/>
+      <category term="SVM" scheme="https://jiacheng-pan.github.io/wiki/tags/SVM/"/>
     
-      <category term="函数间隔" scheme="http://jiacheng-pan.github.io/wiki/tags/%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94/"/>
+      <category term="函数间隔" scheme="https://jiacheng-pan.github.io/wiki/tags/%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94/"/>
     
-      <category term="几何间隔" scheme="http://jiacheng-pan.github.io/wiki/tags/%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94/"/>
+      <category term="几何间隔" scheme="https://jiacheng-pan.github.io/wiki/tags/%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94/"/>
     
   </entry>
   
   <entry>
     <title>生成学习算法的例子</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/29/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/09-%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/29/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/09-%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/</id>
     <published>2018-06-29T13:10:00.000Z</published>
     <updated>2019-01-20T14:20:52.652Z</updated>
     
@@ -256,21 +256,21 @@ p(y=1|x)
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="生成学习算法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
+      <category term="生成学习算法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
     
-      <category term="拉普拉斯平滑" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%B9%B3%E6%BB%91/"/>
+      <category term="拉普拉斯平滑" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%B9%B3%E6%BB%91/"/>
     
   </entry>
   
   <entry>
     <title>生成学习算法的概念</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/29/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/08-%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/29/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/08-%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/</id>
     <published>2018-06-29T04:40:00.000Z</published>
     <updated>2019-01-20T14:20:52.652Z</updated>
     
@@ -287,21 +287,21 @@ p(y=1|x)
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="生成学习算法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
+      <category term="生成学习算法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%94%9F%E6%88%90%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
     
-      <category term="高斯判别算法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E9%AB%98%E6%96%AF%E5%88%A4%E5%88%AB%E7%AE%97%E6%B3%95/"/>
+      <category term="高斯判别算法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E9%AB%98%E6%96%AF%E5%88%A4%E5%88%AB%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>广义线性模型</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/09/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/07-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/09/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/07-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/</id>
     <published>2018-06-09T08:29:00.000Z</published>
     <updated>2019-01-20T14:20:52.669Z</updated>
     
@@ -317,21 +317,21 @@ p(y=1|x)
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="softmax" scheme="http://jiacheng-pan.github.io/wiki/tags/softmax/"/>
+      <category term="softmax" scheme="https://jiacheng-pan.github.io/wiki/tags/softmax/"/>
     
-      <category term="指数分布族" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F/"/>
+      <category term="指数分布族" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F/"/>
     
   </entry>
   
   <entry>
     <title>牛顿法</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/07/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/06-%E7%89%9B%E9%A1%BF%E6%B3%95/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/07/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/06-%E7%89%9B%E9%A1%BF%E6%B3%95/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/</id>
     <published>2018-06-07T12:40:00.000Z</published>
     <updated>2019-01-20T14:20:52.652Z</updated>
     
@@ -347,19 +347,19 @@ p(y=1|x)
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="牛顿法" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%89%9B%E9%A1%BF%E6%B3%95/"/>
+      <category term="牛顿法" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%89%9B%E9%A1%BF%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>二分类问题</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/05-%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/05-%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/</id>
     <published>2018-06-05T03:03:00.000Z</published>
     <updated>2019-01-20T14:20:52.653Z</updated>
     
@@ -375,19 +375,19 @@ p(y=1|x)
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="二分类问题" scheme="http://jiacheng-pan.github.io/wiki/tags/%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/"/>
+      <category term="二分类问题" scheme="https://jiacheng-pan.github.io/wiki/tags/%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>线性模型的概率解释</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/04-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/05/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/04-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/</id>
     <published>2018-06-05T03:02:00.000Z</published>
     <updated>2019-01-20T14:20:01.708Z</updated>
     
@@ -404,19 +404,19 @@ y^{(i)} = \theta^Tx^{(i)}
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="线性回归" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+      <category term="线性回归" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     
   </entry>
   
   <entry>
     <title>过拟合&amp;局部加权回归</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/04/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E8%BF%87%E6%8B%9F%E5%90%88&amp;%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&amp;局部加权回归/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/04/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E8%BF%87%E6%8B%9F%E5%90%88&amp;%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&amp;局部加权回归/</id>
     <published>2018-06-04T10:36:00.000Z</published>
     <updated>2019-01-20T14:20:52.669Z</updated>
     
@@ -433,19 +433,19 @@ y^{(i)} = \theta^Tx^{(i)}
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="局部加权回归" scheme="http://jiacheng-pan.github.io/wiki/tags/%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/"/>
+      <category term="局部加权回归" scheme="https://jiacheng-pan.github.io/wiki/tags/%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/"/>
     
   </entry>
   
   <entry>
     <title>线性回归</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/02-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/02-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/</id>
     <published>2018-06-03T12:04:00.000Z</published>
     <updated>2019-01-20T14:20:52.652Z</updated>
     
@@ -461,19 +461,19 @@ y^{(i)} = \theta^Tx^{(i)}
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="线性回归" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+      <category term="线性回归" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     
   </entry>
   
   <entry>
     <title>监督学习&amp;梯度下降法</title>
-    <link href="http://jiacheng-pan.github.io/wiki/2018/06/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/01-%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0&amp;%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/"/>
-    <id>http://jiacheng-pan.github.io/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&amp;梯度下降法/</id>
+    <link href="https://jiacheng-pan.github.io/wiki/2018/06/03/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/01-%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0&amp;%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95/"/>
+    <id>https://jiacheng-pan.github.io/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&amp;梯度下降法/</id>
     <published>2018-06-03T06:29:00.000Z</published>
     <updated>2019-01-20T14:19:47.141Z</updated>
     
@@ -498,14 +498,14 @@ y^{(i)} = \theta^Tx^{(i)}
     
     </summary>
     
-      <category term="吴恩达·机器学习" scheme="http://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="吴恩达·机器学习" scheme="https://jiacheng-pan.github.io/wiki/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="梯度下降" scheme="http://jiacheng-pan.github.io/wiki/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
+      <category term="梯度下降" scheme="https://jiacheng-pan.github.io/wiki/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/"/>
     
-      <category term="监督学习" scheme="http://jiacheng-pan.github.io/wiki/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
+      <category term="监督学习" scheme="https://jiacheng-pan.github.io/wiki/tags/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
