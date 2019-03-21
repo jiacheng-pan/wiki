@@ -76,7 +76,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -95,10 +95,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/wiki/',
@@ -129,7 +129,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
     </div>
 
                 </td>
@@ -146,7 +146,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>Categorias</span>
+            <span>categories</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -160,9 +160,9 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
-                            GraphKnowledge.wiki
+                            GraphKnowledge
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge.wiki/矩阵相关的概念/">4: 矩阵相关的概念</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">4: 链接相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/矩阵相关的概念/">5: 矩阵相关的概念</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -245,6 +245,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-吴恩达·机器学习/11-SVM（二）最优间隔分类器" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/SVM/">SVM</a>, <a class="tag-link" href="/wiki/tags/拉格朗日乘子法/">拉格朗日乘子法</a>, <a class="tag-link" href="/wiki/tags/最优间隔分类器/">最优间隔分类器</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">
+            <time datetime="2018-07-03T08:27:00.000Z" itemprop="datePublished">2018-07-03</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/11-SVM（二）最优间隔分类器.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">SVM（二）最优间隔分类器</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><p><strong>最优间隔分类器</strong>（<em>Optimal Margin Classifier</em>）。其目标是使得最小几何间隔最大化（SVM（一）概念）： <span class="math display">\[
+\text{目标(1):} \\\
+\max_{w, b} \gamma \\\
+\text{ s.t. } y^{(i)} \cdot ((\frac{w}{||w||})^T \cdot x^{(i)}+\frac{b}{||w||}) \geq \gamma, i=1,\ldots,n
+\]</span> 我们知道，<span class="math inline">\(\hat{\gamma} = \frac{\gamma}{||w||}\)</span>，所以上面的目标可以等同于： <span class="math display">\[
+<p>
+                
+            
+        
+        
+            </p></span></p></div>   
+            <div class="article-more-link">
+                <a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-吴恩达·机器学习/10-SVM（一）概念" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1181,112 +1285,8 @@ y^{(i)} = \theta^Tx^{(i)} + \varepsilon^{(i)}
 
 
     
-        <article id="post-吴恩达·机器学习/01-监督学习&amp;梯度下降法" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/梯度下降/">梯度下降</a>, <a class="tag-link" href="/wiki/tags/监督学习/">监督学习</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">
-            <time datetime="2018-06-03T06:29:00.000Z" itemprop="datePublished">2018-06-03</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/01-监督学习&amp;梯度下降法.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/01-监督学习&amp;梯度下降法.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/01-监督学习&amp;梯度下降法.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">监督学习&amp;梯度下降法</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h2 id="监督学习">监督学习</h2>
-<h3 id="符号定义">符号定义：</h3>
-<table>
-<thead>
-<tr class="header">
-<p>
-                
-            
-        
-        
-            </p></tr></thead></table></div>   
-            <div class="article-more-link">
-                <a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/wiki/">&laquo; Anterior</a><a class="page-number" href="/wiki/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/wiki/">&laquo; Prev</a><a class="page-number" href="/wiki/">1</a><span class="page-number current">2</span><a class="page-number" href="/wiki/page/3/">3</a><a class="extend next" rel="next" href="/wiki/page/3/">Next &raquo;</a>
         </nav>
     </section>
         </div>
