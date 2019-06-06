@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>WebGL学习笔记 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="webgl">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="WebGL学习笔记 入门 1234567891011121314151617181920212223242526var canvas = document.getElementById(&apos;webgl&apos;);var webgl = canvas.getContext(&apos;webgl&apos;); // 获取webGL的context// 清除背景并填充颜色webgl.clearColor(0, 0, 0, 0.">
+<meta name="keywords" content="webgl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebGL学习笔记">
+<meta property="og:url" content="https://jiacheng-pan.github.io/wiki/2019/06/06/webGL/WebGL学习笔记/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="WebGL学习笔记 入门 1234567891011121314151617181920212223242526var canvas = document.getElementById(&apos;webgl&apos;);var webgl = canvas.getContext(&apos;webgl&apos;); // 获取webGL的context// 清除背景并填充颜色webgl.clearColor(0, 0, 0, 0.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557306698055.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557313632070.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557316884620.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557388439171.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557388751673.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557403912646.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557454940388.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557455085332.png">
+<meta property="og:updated_time" content="2019-06-06T09:39:47.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebGL学习笔记">
+<meta name="twitter:description" content="WebGL学习笔记 入门 1234567891011121314151617181920212223242526var canvas = document.getElementById(&apos;webgl&apos;);var webgl = canvas.getContext(&apos;webgl&apos;); // 获取webGL的context// 清除背景并填充颜色webgl.clearColor(0, 0, 0, 0.">
+<meta name="twitter:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557306698055.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            GraphKnowledge
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">4: 链接相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/矩阵相关的概念/">5: 矩阵相关的概念</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            webgl
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">1: WebGL-BatchDraw代码阅读+理解</a></li>  <li class="file active"><a href="/wiki/2019/06/06/webGL/WebGL学习笔记/">2: WebGL学习笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-webGL/WebGL学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/06/06/webGL/WebGL学习笔记/">
+            <time datetime="2019-06-06T09:39:11.000Z" itemprop="datePublished">2019-06-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/webGL/WebGL学习笔记.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/webGL/WebGL学习笔记.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/webGL/WebGL学习笔记.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            WebGL学习笔记
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="webgl学习笔记">WebGL学习笔记</h1>
+<h2 id="入门">入门</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>); <span class="comment">// 获取webGL的context</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 清除背景并填充颜色</span></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line">webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点着色器，主要用于描述顶点属性（大小，位置） GLSL ES语言</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = vec4(0.5, 0.5, 0, 1);</span></span><br><span class="line"><span class="string">	gl_PointSize = 10.0;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器，决定片元的颜色等，GLSL ES语言</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = vec4(1, 0, 0, 1);</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化着色器，initShaders函数并非自带函数，需要调用createShader，compileShader等函数</span></span><br><span class="line"><span class="comment">// initShaders详见：https://github.com/MrZJD/webgl/blob/master/lib/base.js</span></span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE)</span><br><span class="line"></span><br><span class="line"><span class="comment">//画点，0表示从第0个点开始绘制，1表示绘制1个点</span></span><br><span class="line">webgl.drawArrays(webgl.POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="使用attribute">使用attribute</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position; //声明attribute变量，存储限定符storage qualifier，必须声明成全局变量，从外部传入</span></span><br><span class="line"><span class="string">attribute float a_PointSize;// 限定符 数据类型 变量名</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = a_Position;</span></span><br><span class="line"><span class="string">	gl_PointSize = a_PointSize;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = vec4(1, 0, 0, 1);</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>);</span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE)</span><br><span class="line"><span class="comment">// 获取attribute变量的地址</span></span><br><span class="line"><span class="keyword">var</span> a_Position = webgl.getAttribLocation(webgl.program, <span class="string">'a_Position'</span>);</span><br><span class="line"><span class="keyword">var</span> a_PointSize = webgl.getAttribLocation(webgl.program, <span class="string">'a_PointSize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据地址给attribute变量赋值</span></span><br><span class="line">webgl.vertexAttrib3f(a_Position, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>); <span class="comment">// 省略第四个参数，会默认赋值1.0</span></span><br><span class="line">webgl.vertexAttrib1f(a_PointSize, <span class="number">10.0</span>);</span><br><span class="line"><span class="comment">// 还有vertexAttrib2f, vertexAttrib4f等函数</span></span><br><span class="line"><span class="comment">// 也可以用矢量版本：</span></span><br><span class="line"><span class="comment">// var position = new Float32Array([1.0, 2.0, 3.0, 1.0]);</span></span><br><span class="line"><span class="comment">// gl.vertextAttrib4fv(a_Position, position)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空颜色缓冲区</span></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line">webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 画点</span></span><br><span class="line">webgl.drawArrays(webgl.POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="使用uniform">使用Uniform</h3>
+<p>只有顶点着色器才能用attribute变量，在片元着色器中，需要用uniform变量（当然也可以用varying）。</p>
+<p>uniform变量用来从JavaScript程序向顶点着色器和片元着色器传输“一致的”（不变的）数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`precision mediump float;// 精度限定</span></span><br><span class="line"><span class="string">uniform vec4 u_FragColor;</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = u_FragColor;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取uniform变量的地址</span></span><br><span class="line"><span class="keyword">var</span> u_FragColor = webgl.getUniformLocation(webgl.program, <span class="string">'u_FragColor'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据地址给uniform变量赋值</span></span><br><span class="line">webgl.uniform4f(u_FragColor, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="三角形">三角形</h2>
+<h3 id="缓冲区">缓冲区</h3>
+<p>利用缓冲区对象可以向顶点着色器传入多个顶点。</p>
+<p>分为五步：</p>
+<ol type="1">
+<li>创建缓冲区对象（<code>gl.createBuffer()</code>）。</li>
+<li>绑定缓冲区对象（<code>gl.bindBuffer()</code>）。</li>
+<li>将数据写入缓冲区（<code>gl.bufferData()</code>）。</li>
+<li>将缓冲区对象分配给一个attribute变量（<code>gl.vertextAttribPointer()</code>）。</li>
+<li>开启attribute变量（<code>gl.enableVertextAttribArray()</code>）。</li>
+</ol>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557306698055.png" alt="1557306698055"><figcaption>1557306698055</figcaption>
+</figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点数据，类型化数组，处理效率更高，但不支持push,pop；</span></span><br><span class="line"><span class="comment">// 可以通过一个数组，或者一个数（也就是数组长度）来初始化</span></span><br><span class="line"><span class="keyword">var</span> points = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0.0</span>, <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">-0.5</span>]);</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建缓冲区对象，利用deleteBuffer进行删除</span></span><br><span class="line"><span class="keyword">var</span> vertexBuffer = webgl.createBuffer();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定对象到缓冲区指针(ARRAY_BUFFER)上</span></span><br><span class="line">webgl.bindBuffer(webgl.ARRAY_BUFFER, vertexBuffer);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** gl.bufferData(target, data, usage);</span></span><br><span class="line"><span class="comment"> * 写入数据到缓冲区</span></span><br><span class="line"><span class="comment"> * @param target gl.ARRAY_BUFFER 或 gl.ELEMENT_ARRAY_BUFFER</span></span><br><span class="line"><span class="comment"> * @param data </span></span><br><span class="line"><span class="comment"> * @param usage gl.STATIC_DRAW（只会向缓冲区对象写入一次数据，但是要绘制很多次）；gl.STREAM_DRAW（只会向缓冲区对象写入一次数据，然后绘制若干次）；gl.DYNAMIC_DRAW（多次写入数据，多次绘制）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">webgl.bufferData(webgl.ARRAY_BUFFER, points, webgl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** gl.vertexAttribPointer(location, size, type, normalized, stride, offset);</span></span><br><span class="line"><span class="comment"> * 指定attribute变量解析规则</span></span><br><span class="line"><span class="comment"> * @param location 指定待分配的attribute变量</span></span><br><span class="line"><span class="comment"> * @param size 指定每个顶点的数据数量（1-4个）</span></span><br><span class="line"><span class="comment"> * @param type 数据类型（gl.SHORT, gl.INT, gl.FLOAT等等）</span></span><br><span class="line"><span class="comment"> * @param normalized 是否需要归一化</span></span><br><span class="line"><span class="comment"> * @param stride 指定相邻两个顶点间的字节数，默认为0</span></span><br><span class="line"><span class="comment"> * @param offset 指定缓冲区对象中的偏移量（以字节为单位），即attribute变量从缓冲区中的何处开始读取。如果是从起始位置开始的，offset设为0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">webgl.vertexAttribPointer(a_Position, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启用attribute变量 =&gt; 即链接缓冲区到attribute变量上</span></span><br><span class="line">webgl.enableVertexAttribArray(a_Position);</span><br></pre></td></tr></table></figure>
+<h3 id="drawarrays的第一个参数">drawArrays的第一个参数</h3>
+<table>
+<thead>
+<tr class="header">
+<th>基本图形</th>
+<th>参数mode</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>点</td>
+<td><code>gl.POINTS</code></td>
+<td>一系列点</td>
+</tr>
+<tr class="even">
+<td>线段</td>
+<td><code>gl.LINES</code></td>
+<td>一系列单独的线段（(v0,v1),(v2,v3),(v4,v5),...）</td>
+</tr>
+<tr class="odd">
+<td>线条</td>
+<td><code>gl.LINE_STRIP</code></td>
+<td>一系列连接的线段（(v0,v1),(v1,v2),(v2,v3),...）</td>
+</tr>
+<tr class="even">
+<td>回路</td>
+<td><code>gl.LINE_LOOP</code></td>
+<td>首尾相连的一系列线段（(v0,v1),(v1,v2),...,(vn,v0)）</td>
+</tr>
+<tr class="odd">
+<td>三角形</td>
+<td><code>gl.TRIANGLES</code></td>
+<td>一系列单独的三角形（(v0,v1,v2),(v3,v4,v5),...）</td>
+</tr>
+<tr class="even">
+<td>三角带</td>
+<td><code>gl.TRIANGLE_STRIP</code></td>
+<td>一系列条带状的三角形（(v0,v1,v2),(v2,v1,v3),(v2,v3,v4),...）</td>
+</tr>
+<tr class="odd">
+<td>三角扇</td>
+<td><code>gl.TRIANGLE_FAN</code></td>
+<td>一系列扇状的三角形（(v0,v1,v2),(v0,v2,v3),(v0,v3,v4),...）</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557313632070.png" alt="1557313632070"><figcaption>1557313632070</figcaption>
+</figure>
+<h3 id="平移">平移</h3>
+<p>利用uniform变量来对图形进行平移：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">uniform vec4 u_Translation; //平移变换矢量</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = a_Position + u_Translation;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = vec4(1.0, 0, 0, 1.0);</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>);</span><br><span class="line"></span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取attribute变量的地址</span></span><br><span class="line"><span class="keyword">var</span> a_Position = webgl.getAttribLocation(webgl.program, <span class="string">'a_Position'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取uniform变量的地址</span></span><br><span class="line"><span class="keyword">var</span> u_Translation = webgl.getUniformLocation(webgl.program, <span class="string">'u_Translation'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平移矢量值</span></span><br><span class="line"><span class="comment">// 为什么平移矢量最后一个值是0：因为点（x,y,z,w）的w值只能为1.0，而原来点的w坐标已经是1.0了</span></span><br><span class="line"><span class="keyword">var</span> tVal = [<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>, <span class="number">0</span>];</span><br><span class="line"><span class="comment">// 设置uniform变量的值</span></span><br><span class="line">webgl.uniform4f(u_Translation, tVal[<span class="number">0</span>], tVal[<span class="number">1</span>], tVal[<span class="number">2</span>], tVal[<span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点数据</span></span><br><span class="line"><span class="keyword">var</span> points = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">-0.5</span>]);</span><br><span class="line"><span class="keyword">var</span> n = points.length/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// buffer对象</span></span><br><span class="line"><span class="keyword">var</span> vertexBuffer = webgl.createBuffer();</span><br><span class="line"><span class="keyword">if</span> ( !vertexBuffer ) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Failed to create buffer!'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定对象到缓冲区指针(顶点数据)上</span></span><br><span class="line">webgl.bindBuffer(webgl.ARRAY_BUFFER, vertexBuffer);</span><br><span class="line"><span class="comment">// 写入数据到缓冲区</span></span><br><span class="line">webgl.bufferData(webgl.ARRAY_BUFFER, points, webgl.STATIC_DRAW);</span><br><span class="line"><span class="comment">// 指定attribute变量解析规则</span></span><br><span class="line">webgl.vertexAttribPointer(a_Position, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 启用attribute变量 =&gt; 即链接缓冲区到attribute变量上</span></span><br><span class="line">webgl.enableVertexAttribArray(a_Position);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空颜色缓冲区</span></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line">webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绘制</span></span><br><span class="line">webgl.drawArrays(webgl.TRIANGLES, <span class="number">0</span>, n);</span><br></pre></td></tr></table></figure>
+<h3 id="旋转">旋转</h3>
+<p><strong>右手螺旋法则（right-hand-rule rotation）</strong>。</p>
+<p>右手握拳，大拇指伸直并使其指向旋转轴的正方向，那么右手的其余几个手指就指明了<strong>正旋转（positive rotation）</strong>的方向。</p>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557316884620.png" alt="1557316884620"><figcaption>1557316884620</figcaption>
+</figure>
+<p>假如点p经过正旋转<span class="math inline">\(\beta\)</span>角度，变成p'，其计算公式： <span class="math display">\[
+x = r \cos \alpha \\\
+y = r \sin \alpha \\\
+x&#39; = r \cos (\alpha + \beta) = r(\cos \alpha \cos \beta - \sin \alpha \sin \beta ) = x\cos\beta - y \sin \beta \\\
+y&#39; = r \sin (\alpha + \beta) = r(\sin \alpha \cos \beta + \cos \alpha \sin \beta ) = y \cos \beta + x \sin \beta \\\
+z&#39; = z
+\]</span> 利用顶点着色器来进行旋转：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">uniform float u_CosB, u_SinB;//变换量</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	//旋转变换方式</span></span><br><span class="line"><span class="string">	gl_Position.x = a_Position.x * u_CosB - a_Position.y * u_SinB;</span></span><br><span class="line"><span class="string">	gl_Position.y = a_Position.x * u_SinB + a_Position.y * u_CosB;</span></span><br><span class="line"><span class="string">	gl_Position.z = a_Position.z;</span></span><br><span class="line"><span class="string">	gl_Position.w = 1.0;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//计算变换值</span></span><br><span class="line"><span class="keyword">var</span> tAngle = <span class="number">90</span>;<span class="comment">//角度制</span></span><br><span class="line"><span class="keyword">var</span> tRadian = tAngle * <span class="built_in">Math</span>.PI / <span class="number">180</span>;<span class="comment">//弧度制</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取uniform变量的地址</span></span><br><span class="line"><span class="keyword">var</span> u_CosB = webgl.getUniformLocation(webgl.program, <span class="string">'u_CosB'</span>);</span><br><span class="line"><span class="keyword">var</span> u_SinB = webgl.getUniformLocation(webgl.program, <span class="string">'u_SinB'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置uniform变量的值</span></span><br><span class="line">webgl.uniform1f(u_SinB, <span class="built_in">Math</span>.sin(tRadian));</span><br><span class="line">webgl.uniform1f(u_CosB, <span class="built_in">Math</span>.cos(tRadian));</span><br></pre></td></tr></table></figure>
+<h3 id="变换矩阵-transformation-matrix">变换矩阵 Transformation Matrix</h3>
+<p>上面的旋转过程可以表示成： <span class="math display">\[
+\left[ \begin{array}{c}{x^{\prime}} \\ {y^{\prime}} \\ {z^{\prime}}\end{array}\right]=\left[ \begin{array}{ccc}{\cos \beta} &amp; {-\sin \beta} &amp; {0} \\ {\sin \beta} &amp; {\cos \beta} &amp; {0} \\ {0} &amp; {0} &amp; {1}\end{array}\right] \times \left[ \begin{array}{l}{x} \\ {y} \\ {z}\end{array}\right]
+\]</span> 在webGL里面点的坐标是四维的，所以最终表示为<span class="math inline">\(4 \times 4\)</span>的旋转矩阵。</p>
+<h4 id="平移-1">平移</h4>
+<p><span class="math display">\[
+\left[ \begin{array}{c}{x^{\prime}} \\ {y^{\prime}} \\ {z^{\prime}} \\ {1}\end{array}\right]=\left[ \begin{array}{cccc}{1} &amp; {0} &amp; {0} &amp; {T x} \\ {0} &amp; {1} &amp; {0} &amp; {T y} \\ {0} &amp; {0} &amp; {1} &amp; {T z} \\ {0} &amp; {0} &amp; {0} &amp; {1}\end{array}\right] \times \left[ \begin{array}{l}{x} \\ {y} \\ {z} \\ {1}\end{array}\right]
+\]</span></p>
+<h4 id="旋转-1">旋转</h4>
+<p><span class="math display">\[
+\left[ \begin{array}{c}{x^{\prime}} \\ {y^{\prime}} \\ {z^{\prime}} \\ {1}\end{array}\right]=\left[ \begin{array}{cccc}{\cos \beta} &amp; {-\sin \beta} &amp; {0} &amp; {0} \\ {\sin \beta} &amp; {\cos \beta} &amp; {0} &amp; {0} \\ {0} &amp; {0} &amp; {1} &amp; {0} \\ {0} &amp; {0} &amp; {0} &amp; {1}\end{array}\right] \times \left[ \begin{array}{l}{x} \\ {y} \\ {z} \\ {1}\end{array}\right]
+\]</span></p>
+<h4 id="缩放">缩放</h4>
+<p><span class="math display">\[
+\left[ \begin{array}{c}{x^{\prime}} \\ {y^{\prime}} \\ {z^{\prime}} \\ {1}\end{array}\right]=\left[ \begin{array}{cccc}{S x} &amp; {0} &amp; {0} &amp; {0} \\ {0} &amp; {S y} &amp; {0} &amp; {0} \\ {0} &amp; {0} &amp; {S z} &amp; {0} \\ {0} &amp; {0} &amp; {0} &amp; {1}\end{array}\right] \times \left[ \begin{array}{l}{x} \\ {y} \\ {z} \\ {1}\end{array}\right]
+\]</span></p>
+<h4 id="相关代码">相关代码</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">uniform mat4 u_xformMatrix; //变化矩阵</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	// 注意矩阵乘法的先后顺序</span></span><br><span class="line"><span class="string">	gl_Position = u_xformMatrix * a_Position;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 旋转变换矩阵</span></span><br><span class="line"><span class="keyword">var</span> tAngle = <span class="number">90</span>;<span class="comment">//角度制</span></span><br><span class="line"><span class="keyword">var</span> tRadian = (tAngle * <span class="built_in">Math</span>.PI) / <span class="number">180</span>;<span class="comment">//弧度制</span></span><br><span class="line"><span class="keyword">var</span> cosB = <span class="built_in">Math</span>.cos(tRadian);</span><br><span class="line"><span class="keyword">var</span> sinB = <span class="built_in">Math</span>.sin(tRadian);</span><br><span class="line"><span class="keyword">var</span> rotateMatrix = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="comment">// webgl中矩阵是列主序</span></span><br><span class="line">    cosB, sinB, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    -sinB, cosB, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span></span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 平移变换矩阵</span></span><br><span class="line"><span class="keyword">var</span> tx=<span class="number">0.5</span>, ty=<span class="number">0.5</span>, tz=<span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">var</span> translateMatrix = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="comment">// webgl中矩阵是列主序</span></span><br><span class="line">    <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    tx, ty, tz, <span class="number">1.0</span></span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 缩放变换矩阵</span></span><br><span class="line"><span class="keyword">var</span> sx=<span class="number">1.5</span>, sy=<span class="number">1.5</span>, sz=<span class="number">1.0</span>;</span><br><span class="line"><span class="keyword">var</span> scaleMatrix = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="comment">// webgl中矩阵是列主序</span></span><br><span class="line">    sx, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, sy, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.0</span>, sz, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span></span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xformMatrix = scaleMatrix;</span><br><span class="line"><span class="comment">// var xformMatrix = translateMatrix</span></span><br><span class="line"><span class="comment">// var xformMatrix = rotateMatrix</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取uniform变量的地址</span></span><br><span class="line"><span class="keyword">var</span> u_xformMatrix = webgl.getUniformLocation( webgl.program, <span class="string">'u_xformMatrix'</span>);</span><br><span class="line">webgl.uniformMatrix4fv(u_xformMatrix, <span class="literal">false</span>, xformMatrix);</span><br></pre></td></tr></table></figure>
+<h3 id="matrix4对象">Matrix4对象</h3>
+<p>自定义对象，用来处理<span class="math inline">\(4 \times 4\)</span>矩阵。</p>
+<p>详见：https://github.com/MrZJD/webgl/blob/master/lib/base.js</p>
+<table>
+<colgroup>
+<col style="width: 34%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>方法与属性名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Matrix4.elements</code></td>
+<td>类型化数组（Float32Array）了Matrix4实例的矩阵元素</td>
+</tr>
+<tr class="even">
+<td><code>Matrix4.setIdentity()</code></td>
+<td>将Matrix4实例初始化为单位阵</td>
+</tr>
+<tr class="odd">
+<td><code>Matrix4.setTranslate(x,y,z)</code></td>
+<td>将Matrix4实例设置为平移变换矩阵，在x轴上平移的距离为x，在y轴上平移的距离为y，在z轴上平移的距离为 z</td>
+</tr>
+<tr class="even">
+<td><code>Matrix4.setRotate(angle,x,y,z)</code></td>
+<td>将Matrix4实例设置为旋转变换矩阵，旋转的角度为angle，旋转轴为（x,y,z）。旋转轴（x,y,z）无须归一化。</td>
+</tr>
+<tr class="odd">
+<td><code>Matrix4.setScale(x,y,z)</code></td>
+<td>将Matrix4实例设置为缩放变换矩阵，在三个轴上的缩放因子分别为x、y和z</td>
+</tr>
+<tr class="even">
+<td><code>Matrix4.translate(x,y,z)</code></td>
+<td>将Matrix4实例乘以一个平移变换矩阵（该平移矩阵在x 轴上平移的距离为x，在y轴上平移的距离是y，在z轴上平移的距离是z），所得的结果还存储在Matrix4中</td>
+</tr>
+<tr class="odd">
+<td><code>Matrix4.rotate(angle,x,y,z)</code></td>
+<td>将Matrix4实例乘以一个旋转变换矩阵（该旋转矩阵旋转的角度为angle，旋转轴为（x,y,z）。旋转轴（x,y,z）无须归一化），所得的结果还存储AMatrix4中</td>
+</tr>
+<tr class="even">
+<td><code>Matrix4.scale(x,y,z)</code></td>
+<td>将Matrix4实例乘以一个缩放变换矩阵（该缩放矩阵在三个轴上的缩放因子分别为x, y和z），所得的结果还存储在Matrix4中</td>
+</tr>
+<tr class="odd">
+<td><code>Matrix4.set(m)</code></td>
+<td>将Matrix4实例设置为m，m必须也是一个Matrix4实例</td>
+</tr>
+</tbody>
+</table>
+<h3 id="每秒钟自动旋转">每秒钟自动旋转</h3>
+<p>需要引入：https://github.com/MrZJD/webgl/blob/master/lib/base.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> VSHADER = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">uniform mat4 u_xformMatrix;</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">    gl_Position = u_xformMatrix * a_Position;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> FSHADER =</span><br><span class="line">    <span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">    gl_FragColor = vec4(1.0, 0, 0, 1.0);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>)</span><br><span class="line"><span class="keyword">var</span> gl = getWebGLContext(canvas)</span><br><span class="line"></span><br><span class="line">initShaders(gl, VSHADER, FSHADER)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a_Position = gl.getAttribLocation(gl.program, <span class="string">'a_Position'</span>)</span><br><span class="line"><span class="keyword">var</span> u_xformMatrix = gl.getUniformLocation(gl.program, <span class="string">'u_xformMatrix'</span>) <span class="comment">// 变换矩阵</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点数据</span></span><br><span class="line"><span class="keyword">var</span> points = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0</span>, <span class="number">0.3</span>, <span class="number">-0.3</span>, <span class="number">-0.3</span>, <span class="number">0.3</span>, <span class="number">-0.3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建buffer对象</span></span><br><span class="line"><span class="keyword">var</span> vBuffer = gl.createBuffer()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定buffer对象到指针上</span></span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将数据写入buffer</span></span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, points, gl.STATIC_DRAW)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定attribute变量解析规则</span></span><br><span class="line">gl.vertexAttribPointer(a_Position, <span class="number">2</span>, gl.FLOAT, <span class="literal">false</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将buffer传入到attribute变量上</span></span><br><span class="line">gl.enableVertexAttribArray(a_Position)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绘制</span></span><br><span class="line">gl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> beginTime = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">var</span> currentAngle = <span class="number">0</span></span><br><span class="line"><span class="keyword">const</span> anglePerSec = <span class="number">30</span> <span class="comment">// 每秒钟旋转30度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">    currentAngle = anglePerSec * (time - beginTime) / <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> rotateMatrix = <span class="keyword">new</span> Matrix4()</span><br><span class="line">    rotateMatrix.setRotate(currentAngle, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    gl.uniformMatrix4fv(u_xformMatrix, <span class="literal">false</span>, rotateMatrix.elements)</span><br><span class="line">    </span><br><span class="line">    gl.clear(gl.COLOR_BUFFER_BIT)</span><br><span class="line">    gl.drawArrays(gl.TRIANGLES, <span class="number">0</span>, points.length / <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    requestAnimationFrame(tick)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tick()</span><br></pre></td></tr></table></figure>
+<h2 id="颜色与纹理">颜色与纹理</h2>
+<h3 id="非坐标数据传入顶点着色器">非坐标数据传入顶点着色器</h3>
+<p>加入节点size</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">attribute float a_PointSize;</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = a_Position;</span></span><br><span class="line"><span class="string">    gl_PointSize = a_PointSize;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取attribute变量的地址</span></span><br><span class="line"><span class="keyword">var</span> a_Position = webgl.getAttribLocation(webgl.program, <span class="string">'a_Position'</span>);</span><br><span class="line"><span class="keyword">var</span> a_PointSize = webgl.getAttribLocation(webgl.program, <span class="string">'a_PointSize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点数据（x,y,size)</span></span><br><span class="line"><span class="keyword">var</span> points = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">2.0</span>, <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">5.0</span>, <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">10.0</span>]);</span><br><span class="line"><span class="keyword">var</span> n = points.length / <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> FSIZE = points.BYTES_PER_ELEMENT;</span><br><span class="line"></span><br><span class="line"><span class="comment">// buffer对象</span></span><br><span class="line"><span class="keyword">var</span> vertexBuffer = webgl.createBuffer();</span><br><span class="line"><span class="keyword">if</span> ( !vertexBuffer ) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Failed to create buffer!'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定对象到缓冲区指针(顶点数据)上</span></span><br><span class="line">webgl.bindBuffer(webgl.ARRAY_BUFFER, vertexBuffer);</span><br><span class="line"><span class="comment">// 写入数据到缓冲区</span></span><br><span class="line">webgl.bufferData(webgl.ARRAY_BUFFER, points, webgl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定attribute变量解析规则</span></span><br><span class="line"><span class="comment">// 这里的stride参数设置为了 FSIZE*3，因为一个节点现在有三个参数：x,y,size</span></span><br><span class="line">webgl.vertexAttribPointer(a_Position, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">3</span>, <span class="number">0</span>);</span><br><span class="line">webgl.vertexAttribPointer(a_PointSize, <span class="number">1</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">3</span>, FSIZE*<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启用attribute变量 =&gt; 即链接缓冲区到attribute变量上</span></span><br><span class="line">webgl.enableVertexAttribArray(a_Position);</span><br><span class="line">webgl.enableVertexAttribArray(a_PointSize);</span><br></pre></td></tr></table></figure>
+<h3 id="varying变量">varying变量</h3>
+<p>之前利用uniform变量来将颜色信息传入片元着色器；利用<strong>varying变量</strong>可以从顶点着色器中向片元着色器中传输颜色；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">attribute vec4 a_Color;</span></span><br><span class="line"><span class="string">varying vec4 v_Color;</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = a_Position;</span></span><br><span class="line"><span class="string">    v_Color = a_Color;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`precision mediump float;</span></span><br><span class="line"><span class="string">varying vec4 v_Color;</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = v_Color;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点数据: (x,y,r,g,b)</span></span><br><span class="line"><span class="keyword">var</span> points = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">                               <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>,</span><br><span class="line">                               <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>]);</span><br><span class="line"><span class="keyword">var</span> n = points.length / <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> FSIZE = points.BYTES_PER_ELEMENT;</span><br><span class="line"></span><br><span class="line"><span class="comment">// buffer对象</span></span><br><span class="line"><span class="keyword">var</span> vertexBuffer = webgl.createBuffer();</span><br><span class="line"><span class="keyword">if</span> ( !vertexBuffer ) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'Failed to create buffer!'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定对象到缓冲区指针(顶点数据)上</span></span><br><span class="line">webgl.bindBuffer(webgl.ARRAY_BUFFER, vertexBuffer);</span><br><span class="line"><span class="comment">// 写入数据到缓冲区</span></span><br><span class="line">webgl.bufferData(webgl.ARRAY_BUFFER, points, webgl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定attribute变量解析规则</span></span><br><span class="line"><span class="comment">// 坐标信息占两位</span></span><br><span class="line">webgl.vertexAttribPointer(a_Position, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">5</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 颜色信息占三位</span></span><br><span class="line">webgl.vertexAttribPointer(a_Color, <span class="number">3</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">5</span>, FSIZE*<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启用attribute变量 =&gt; 即链接缓冲区到attribute变量上</span></span><br><span class="line">webgl.enableVertexAttribArray(a_Position);</span><br><span class="line">webgl.enableVertexAttribArray(a_Color);</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557388439171.png" alt="1557388439171"><figcaption>1557388439171</figcaption>
+</figure>
+<h3 id="为什么是彩色三角形">为什么是彩色三角形？</h3>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557388751673.png" alt="顶点坐标，图形装配，光栅化，执行片元着色器"><figcaption>顶点坐标，图形装配，光栅化，执行片元着色器</figcaption>
+</figure>
+<ul>
+<li><strong>图形装配</strong>指的是：将孤立的顶点坐标装配成几何图形（几何图形的类型由drawArrays的第一个参数决定）</li>
+<li><strong>光栅化过程</strong>：将创配好的几何图形转化成片元</li>
+</ul>
+<h3 id="纹理">纹理</h3>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557403912646.png" alt="纹理坐标系统和webGL坐标系统"><figcaption>纹理坐标系统和webGL坐标系统</figcaption>
+</figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = <span class="string">`</span></span><br><span class="line"><span class="string">    attribute vec4 a_Position;</span></span><br><span class="line"><span class="string">    attribute vec2 a_TextCoord; // 纹理坐标</span></span><br><span class="line"><span class="string">    varying vec2 v_TextCoord;</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        gl_Position = a_Position;</span></span><br><span class="line"><span class="string">        v_TextCoord = a_TextCoord;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = <span class="string">`</span></span><br><span class="line"><span class="string">    precision mediump float;</span></span><br><span class="line"><span class="string">    uniform sampler2D u_Sampler; //</span></span><br><span class="line"><span class="string">    varying vec2 v_TextCoord; //</span></span><br><span class="line"><span class="string">    void main() &#123;</span></span><br><span class="line"><span class="string">        // 利用shader对图片进行反转</span></span><br><span class="line"><span class="string">        // gl_FragColor = texture2D(u_Sampler, vec2(v_TextCoord.x, -v_TextCoord.y));</span></span><br><span class="line"><span class="string">		</span></span><br><span class="line"><span class="string">        gl_FragColor = texture2D(u_Sampler, v_TextCoord);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>);</span><br><span class="line"></span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE);</span><br><span class="line"></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化buffer</span></span><br><span class="line"><span class="keyword">var</span> attrData = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([</span><br><span class="line">    <span class="comment">//顶点坐标  纹理坐标</span></span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,</span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.0</span>,</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">1.0</span>, <span class="number">0.0</span></span><br><span class="line">]);</span><br><span class="line"><span class="keyword">var</span> n = attrData.length / <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> FSIZE = attrData.BYTES_PER_ELEMENT;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> buffer = webgl.createBuffer();</span><br><span class="line">webgl.bindBuffer(webgl.ARRAY_BUFFER, buffer);</span><br><span class="line">webgl.bufferData(webgl.ARRAY_BUFFER, attrData, webgl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a_Position = webgl.getAttribLocation(webgl.program, <span class="string">'a_Position'</span>);</span><br><span class="line"><span class="keyword">var</span> a_TextCoord = webgl.getAttribLocation(webgl.program, <span class="string">'a_TextCoord'</span>);</span><br><span class="line"></span><br><span class="line">webgl.vertexAttribPointer(a_Position, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">4</span>, <span class="number">0</span>);</span><br><span class="line">webgl.vertexAttribPointer(a_TextCoord, <span class="number">2</span>, webgl.FLOAT, <span class="literal">false</span>, FSIZE*<span class="number">4</span>, FSIZE*<span class="number">2</span>);</span><br><span class="line">webgl.enableVertexAttribArray(a_Position);</span><br><span class="line">webgl.enableVertexAttribArray(a_TextCoord);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//图片加载成功后 =&gt; 进行纹理加载</span></span><br><span class="line">loadImage(<span class="string">'http://localhost:8080/static/sky.jpg'</span>)</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">img</span>)</span>&#123;</span><br><span class="line">        loadTexture(webgl, n, img);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载图片</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImage</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123; resolve(img) &#125;;</span><br><span class="line">        img.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123; <span class="built_in">console</span>.error(<span class="string">'Failed to load image!'</span>); reject(e)&#125;;</span><br><span class="line">        img.src = url;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绘制纹理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadTexture</span> (<span class="params">webgl, n, image</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建纹理对象</span></span><br><span class="line">    <span class="keyword">var</span> texture = webgl.createTexture();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取纹理的存储位置</span></span><br><span class="line">    <span class="keyword">var</span> u_Sampler = webgl.getUniformLocation(webgl.program, <span class="string">'u_Sampler'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 对纹理进行Y轴反转，第一个参数表示对Y轴进行反转，第二个参数1表示true，0表示false</span></span><br><span class="line">    <span class="comment">// 因为纹理坐标系统中的t轴方向与PNG，BMP，JPG等格式图片的坐标系统Y轴方向相反</span></span><br><span class="line">    <span class="comment">// 也可以在着色器中手动反转</span></span><br><span class="line">    webgl.pixelStorei(webgl.UNPACK_FLIP_Y_WEBGL, <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//开启0号纹理单元，一共有0-7八个纹理单元</span></span><br><span class="line">    webgl.activeTexture(webgl.TEXTURE0);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//向target绑定纹理对象</span></span><br><span class="line">    webgl.bindTexture(webgl.TEXTURE_2D, texture);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 配置纹理参数</span></span><br><span class="line">    <span class="comment">// 第一个参数为纹理地址</span></span><br><span class="line">    <span class="comment">// 第二个参数为 映射方法：</span></span><br><span class="line">    <span class="comment">// * gl.TEXTURE_MAG_FILTER(纹理绘制范围超过纹理本身时，进行放大)</span></span><br><span class="line">    <span class="comment">// * gl.TEXTURE_MIN_FILTER(纹理绘制范围小于纹理本身时，进行缩小)</span></span><br><span class="line">    <span class="comment">// * gl.TEXTURE_WRAP_S(如何对纹理左侧或者右侧的区域进行填充)</span></span><br><span class="line">    <span class="comment">// * gl.TEXTURE_WRAP_T(如何对纹理上方或者下方的区域进行填充)</span></span><br><span class="line">    <span class="comment">// 第三个参数是对第二个参数的补充：</span></span><br><span class="line">    <span class="comment">// * 如果选择（TEXTURE_MAG_FILTER/TEXTURE_MIN_FILTER），第三个参数可以选择：</span></span><br><span class="line">    <span class="comment">// * gl.NEAREST：使用原纹理上距离映射后像素（新像素）中心最近的那个像素的颜色值，作为新像素的值（使用曼哈顿距离）</span></span><br><span class="line">    <span class="comment">// * gl.LINEAR：使用距离新像素中心最近的四个像素的颜色值的加权平均，作为新像素的值（与gl.NEAREST相比，该方法图像质量更好，但是会有较大的开销。）</span></span><br><span class="line">    <span class="comment">// * 如果选择（TEXTURE_WRAP_S/TEXTURE_WRAP_T），第三个参数可以选择：</span></span><br><span class="line">    <span class="comment">// * gl.REPEAT：平铺式的重复纹理</span></span><br><span class="line">    <span class="comment">// * gl.MIRRORED_REPEAT：镜像对称式的重复纹理</span></span><br><span class="line">    <span class="comment">// * gl.CLAMP_TO_EDGE：使用纹理图像边缘值</span></span><br><span class="line">    webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MIN_FILTER, webgl.LINEAR);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** gl.texImage2D(target, level, internalformat, format, type, image);</span></span><br><span class="line"><span class="comment">     * 配置纹理图像</span></span><br><span class="line"><span class="comment">     * @param target 纹理对象的目标地址</span></span><br><span class="line"><span class="comment">     * @param level 为金字塔纹理准备的，平时传入0</span></span><br><span class="line"><span class="comment">     * @param internalformat 图像的内部格式（RGB,RBGA,ALPHA,LUMINANCE,LUMUNANCE_ALPHA）</span></span><br><span class="line"><span class="comment">     * @param format 纹理数据的格式，必须使用与internalformat相同的值</span></span><br><span class="line"><span class="comment">     * @param type 纹理数据的类型（UNISGNED_BYTE，每个颜色分量占一个字节；UNSIGNED_SHORT_5_6_5，RGB每个分量分别占5/6/5比特；UNSIGNED_SHORT_4_4_4_4，RGBA每个分量分别占4/4/4/4比特；UNSIGNED_SHORT_5_5_5_1：RGBA每个分量占5/5/5/1比特）</span></span><br><span class="line"><span class="comment">     * @param  image 纹理图像的image对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    webgl.texImage2D(webgl.TEXTURE_2D, <span class="number">0</span>, webgl.RGB, webgl.RGB, webgl.UNSIGNED_BYTE, image);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将0号纹理传递给着色器</span></span><br><span class="line">    webgl.uniform1i(u_Sampler, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 绘图</span></span><br><span class="line">    webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line">    webgl.drawArrays(webgl.TRIANGLE_STRIP, <span class="number">0</span>, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当修改纹理区域：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化buffer</span></span><br><span class="line"><span class="keyword">var</span> attrData = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([</span><br><span class="line">    <span class="comment">//顶点坐标  纹理坐标</span></span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">-0.3</span>, <span class="number">1.7</span>,</span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">-0.3</span>, <span class="number">-0.2</span>,</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">1.7</span>, <span class="number">1.7</span>,</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">1.7</span>, <span class="number">-0.2</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>结果就会变成：</p>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557454940388.png" alt="1557454940388"><figcaption>1557454940388</figcaption>
+</figure>
+<p>因为<code>TEXTURE_WRAP_S</code>和<code>TEXTURE_WRAP_T</code>的默认值都是<code>REPEAT</code>。</p>
+<p>当修改：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_MIN_FILTER, webgl.LINEAR);</span><br><span class="line">webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_S, webgl.CLAMP_TO_EDGE);</span><br><span class="line">webgl.texParameteri(webgl.TEXTURE_2D, webgl.TEXTURE_WRAP_T, webgl.MIRRORED_REPEAT);</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-10/1557455085332.png" alt="1557455085332"><figcaption>1557455085332</figcaption>
+</figure>
+<p>左右变成了边缘值的重复；上下则是镜像；</p>
+<h3 id="多幅纹理">多幅纹理</h3>
+<p>详见：https://github.com/MrZJD/webgl/blob/master/05/lesson05.js</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">WebGL-BatchDraw代码阅读+理解</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>WebGL-BatchDraw代码阅读+理解 | Jiacheng Pan&#39;s Wiki</title>
+    
+    
+        <meta name="keywords" content="webgk">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="WebGL-BatchDraw代码阅读+理解 WebGL2和WebGL1的区别 推荐相关文章：WebGL2系列之从WebGL1迁移到WebGL2 代码中的shader部分几乎没什么区别，只是用了一些300 es版本的新特性：  用了in/out代替varing 片元着色器中不再使用gl_FragColor  关于WebGL-BatchDraw的渲染系统（pixels坐标系统） 点渲染 首先，我们知">
+<meta name="keywords" content="webgk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebGL-BatchDraw代码阅读+理解">
+<meta property="og:url" content="https://jiacheng-pan.github.io/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/index.html">
+<meta property="og:site_name" content="Jiacheng Pan&#39;s Wiki">
+<meta property="og:description" content="WebGL-BatchDraw代码阅读+理解 WebGL2和WebGL1的区别 推荐相关文章：WebGL2系列之从WebGL1迁移到WebGL2 代码中的shader部分几乎没什么区别，只是用了一些300 es版本的新特性：  用了in/out代替varing 片元着色器中不再使用gl_FragColor  关于WebGL-BatchDraw的渲染系统（pixels坐标系统） 点渲染 首先，我们知">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557915075222.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557970082421.png">
+<meta property="og:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557970256887.png">
+<meta property="og:updated_time" content="2019-06-06T09:38:55.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebGL-BatchDraw代码阅读+理解">
+<meta name="twitter:description" content="WebGL-BatchDraw代码阅读+理解 WebGL2和WebGL1的区别 推荐相关文章：WebGL2系列之从WebGL1迁移到WebGL2 代码中的shader部分几乎没什么区别，只是用了一些300 es版本的新特性：  用了in/out代替varing 片元着色器中不再使用gl_FragColor  关于WebGL-BatchDraw的渲染系统（pixels坐标系统） 点渲染 首先，我们知">
+<meta name="twitter:image" content="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557915075222.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Jiacheng Pan&#39;s Wiki" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/wiki/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/wiki/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wiki/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/wiki/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/wiki/css/style.css">
+    <script src="/wiki/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/wiki/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/wiki/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/wiki/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Jiacheng Pan&#39;s Wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a>
+                
+                    <a class="main-nav-link" href="/wiki/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/wiki/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/wiki/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/wiki/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/wiki/',
+        CONTENT_URL: '/wiki/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/wiki/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="https://jiacheng-pan.github.io/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/wiki/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            GraphKnowledge
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/Home/">1: Introduction</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/节点相关的概念/">2: 节点相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/结构相关的概念/">3: 结构相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">4: 链接相关的概念</a></li>  <li class="file"><a href="/wiki/2019/01/18/GraphKnowledge/矩阵相关的概念/">5: 矩阵相关的概念</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            webgl
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">1: WebGL-BatchDraw代码阅读+理解</a></li>  <li class="file"><a href="/wiki/2019/06/06/webGL/WebGL学习笔记/">2: WebGL学习笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            吴恩达·机器学习
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-webGL/WebGL-BatchDraw代码阅读+理解" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/webgk/">webgk</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">
+            <time datetime="2019-06-06T09:38:00.000Z" itemprop="datePublished">2019-06-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            WebGL-BatchDraw代码阅读+理解
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="webgl-batchdraw代码阅读理解">WebGL-BatchDraw代码阅读+理解</h2>
+<h3 id="webgl2和webgl1的区别">WebGL2和WebGL1的区别</h3>
+<p>推荐相关文章：<a href="https://www.jianshu.com/p/cb9281eda4e4" target="_blank" rel="noopener">WebGL2系列之从WebGL1迁移到WebGL2</a></p>
+<p>代码中的shader部分几乎没什么区别，只是用了一些300 es版本的新特性：</p>
+<ol type="1">
+<li>用了<code>in/out</code>代替<code>varing</code></li>
+<li>片元着色器中不再使用<code>gl_FragColor</code></li>
+</ol>
+<h3 id="关于webgl-batchdraw的渲染系统pixels坐标系统">关于WebGL-BatchDraw的渲染系统（pixels坐标系统）</h3>
+<h4 id="点渲染">点渲染</h4>
+<p>首先，我们知道webGL的坐标系统是右手坐标系（z轴垂直于屏幕向外，如下图左）：</p>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557915075222.png" alt="1557915075222"><figcaption>1557915075222</figcaption>
+</figure>
+<p>而为我们所熟悉的坐标系往往像上图右边这样的（也就是源码中对应的pixels坐标系统）。</p>
+<p>在webGL-BatchDraw里面，用菱形来拟合一个点，这里的一个菱形是用两个三角形拼起来的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">-0.5</span>,  <span class="number">0.0</span>,  <span class="number">1.0</span>,</span><br><span class="line"><span class="number">0.0</span>, <span class="number">-0.5</span>,  <span class="number">1.0</span>,</span><br><span class="line"><span class="number">0.0</span>,  <span class="number">0.5</span>,  <span class="number">1.0</span>,</span><br><span class="line"><span class="number">0.5</span>,  <span class="number">0.0</span>,  <span class="number">1.0</span>]</span><br><span class="line"><span class="comment">// TRIANGLE_STRIP的意思是：</span></span><br><span class="line"><span class="comment">// 第一个第二个第三个坐标用来画第一个三角形；</span></span><br><span class="line"><span class="comment">// 第二个第三个第四个坐标用来画第二个三角形</span></span><br><span class="line"><span class="keyword">this</span>.GL.drawArraysInstanced(<span class="keyword">this</span>.GL.TRIANGLE_STRIP, <span class="number">0</span>, <span class="number">4</span>, <span class="keyword">this</span>.numDots);</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557970082421.png" alt="1557915075222"><figcaption>1557915075222</figcaption>
+</figure>
+<p>而文章使用了<strong>实例化(Instancing)</strong>的技术，用来加速绘制。</p>
+<blockquote>
+<p>实例化是一种只调用一次渲染函数却能绘制出很多物体的技术，它节省渲染物体时从CPU到GPU的通信时间，而且只需做一次即可。</p>
+</blockquote>
+<p>每当你需要绘制一个新的点，你就需要对已经实例化好的对象进行变换。</p>
+<ol type="1">
+<li><p>对现有的实例进行缩放；我们知道 现有的点太小了（长度和高度都只有1）；假设我们设置的size为<span class="math inline">\(s\)</span>，那么我们就需要对现有的实例放大<span class="math inline">\(s\)</span>倍（z轴不放大）；其缩放矩阵为： <span class="math display">\[
+\left[ \begin{array}{ccc}{s} &amp; {0} &amp; {0} \\ {0} &amp; {s} &amp; {0}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p></li>
+<li><p>位移；要把实例对象移动到我们想要的位置：<span class="math inline">\((x, y)\)</span>，那么平移矩阵是： <span class="math display">\[
+\left[ \begin{array}{ccc}{1} &amp; {0} &amp; {x} \\ {0} &amp; {1} &amp; {y}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span> 我们把这两个矩阵相乘合并，也就得到了在原始空间内的变换矩阵： <span class="math display">\[
+\left[ \begin{array}{ccc}{s} &amp; {0} &amp; {x} \\ {0} &amp; {s} &amp; {y}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p>
+<p>也就是源代码的<code>translate</code>矩阵（577行，779行，857行，947行）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 因为glsl中是列主序的，相当于做了一个转置</span><br><span class="line">mat3 translate = mat3(</span><br><span class="line">    dotSize, 0, 0,</span><br><span class="line">    0, dotSize, 0,</span><br><span class="line">    dotPos.x, dotPos.y, 1);</span><br></pre></td></tr></table></figure></li>
+<li><p>projection；将原始空间的坐标，映射到webGL中。</p>
+<p>假如一个点的在原始空间的坐标是<span class="math inline">\((x, y)\)</span>，其对应的webGL坐标应该是： <span class="math display">\[
+ (\frac{x-\frac{w}{2}}{w / 2}, -\frac{y-\frac{h}{2}}{h / 2}) = \\\
+ (x\times\frac{2}{w}-1,-y\times\frac{2}{h}+1)
+ \]</span></p>
+<p>相当于进行了一次缩放和一次平移，那么我们将它写成矩阵： <span class="math display">\[
+ \left[ \begin{array}{ccc}{2/w} &amp; {0} &amp; {-1} \\ {0} &amp; {-2/h} &amp; {1}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+ \]</span> 这个矩阵也就是原来的<code>projection</code>矩阵（221行）：</p>
+<p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> projection = <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">2</span> / <span class="keyword">this</span>.canvas.width, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">                                   <span class="number">0</span>, <span class="number">-2</span> / <span class="keyword">this</span>.canvas.height, <span class="number">0</span>,</span><br><span class="line">                                   <span class="number">-1</span>, <span class="number">1</span>, <span class="number">1</span>]);</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>最后整合一下：</p>
+<p>就变成了如何把实例对象的坐标（<code>vertexPos</code>）变成需要绘制的对象的坐标：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gl_Position = vec4(projection * translate * vertexPos, 1.0);</span><br></pre></td></tr></table></figure>
+<h4 id="边渲染">边渲染</h4>
+<p>首先，BatchDraw中，同样也是用两个三角形组成的正方形来拟合一条线。</p>
+<p>其实例化对象：</p>
+<figure>
+<img src="https://jackie-image.oss-cn-hangzhou.aliyuncs.com/19-05-15/1557970256887.png" alt="1557915075222"><figcaption>1557915075222</figcaption>
+</figure>
+<ol type="1">
+<li><p><strong>缩放</strong>；要将实例化对象缩放到目标的长宽：<span class="math inline">\((ll, lw)\)</span>（分别指代线的长度和线的宽度），其缩放矩阵（<code>scale</code>矩阵）： <span class="math display">\[
+\left[ \begin{array}{ccc}{ll} &amp; {0} &amp; {0} \\ {0} &amp; {lw} &amp; {0}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p></li>
+<li><p><strong>旋转</strong>；假设 边连接的两个点的坐标分别是：<span class="math inline">\((start.x, start.y), (end.x, end.y)\)</span>，那么需要旋转的夹角是： <span class="math display">\[
+\phi = atan (\frac{end.y-start.y}{end.x-start.x})=atan(\frac{delta.y}{delta.x})
+\]</span> 旋转矩阵（<code>rotate</code>矩阵）就可以写作： <span class="math display">\[
+\left[ \begin{array}{ccc}{\cos\phi} &amp; {-\sin\phi} &amp; {0} \\{\sin\phi} &amp; {\cos\phi} &amp; {0} \\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p></li>
+<li><p><strong>平移</strong>；经过以上两步，实例的中心位置仍然停留在<span class="math inline">\((0,0)\)</span>上，需要平移到目标的中心点<span class="math inline">\(((start.x+end.x)/2, (start.y+end.y)/2)\)</span>。平移矩阵（<code>translate</code>矩阵）写作： <span class="math display">\[
+\left[ \begin{array}{ccc}{1} &amp; {0} &amp; {(start.x+end.x)/2} \\ {0} &amp; {1} &amp; {(start.y+end.y)/2)}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p></li>
+<li><p><strong>映射</strong>；映射到webGL坐标系中，原理同点渲染一致 <span class="math display">\[
+\left[ \begin{array}{ccc}{2/w} &amp; {0} &amp; {-1} \\ {0} &amp; {-2/h} &amp; {1}\\ {0} &amp; {0} &amp; {1}\end{array}\right]
+\]</span></p></li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/wiki/2019/06/06/webGL/WebGL学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    WebGL学习笔记
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/2019/01/18/GraphKnowledge/矩阵相关的概念/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">矩阵相关的概念</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Jiacheng Pan &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/wiki/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/wiki/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/wiki/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/wiki/js/main.js"></script>
+
+    </div>
+</body>
+</html>

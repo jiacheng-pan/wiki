@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jiacheng-pan.github.io/wiki/2019/06/06/webGL/WebGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-06-06T09:39:47.296Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jiacheng-pan.github.io/wiki/2019/06/06/webGL/WebGL-BatchDraw%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB+%E7%90%86%E8%A7%A3/</loc>
+    
+    <lastmod>2019-06-06T09:38:55.168Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jiacheng-pan.github.io/wiki/2019/01/18/GraphKnowledge/%E8%8A%82%E7%82%B9%E7%9B%B8%E5%85%B3%E7%9A%84%E6%A6%82%E5%BF%B5/</loc>
     
-    <lastmod>2019-01-21T13:23:19.237Z</lastmod>
+    <lastmod>2019-03-21T07:45:43.747Z</lastmod>
     
   </url>
   
@@ -107,14 +121,14 @@
   </url>
   
   <url>
-    <loc>https://jiacheng-pan.github.io/wiki/2018/06/09/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/07-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</loc>
+    <loc>https://jiacheng-pan.github.io/wiki/2018/06/04/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E8%BF%87%E6%8B%9F%E5%90%88&%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/</loc>
     
     <lastmod>2019-01-20T14:20:52.669Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jiacheng-pan.github.io/wiki/2018/06/04/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/03-%E8%BF%87%E6%8B%9F%E5%90%88&%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92/</loc>
+    <loc>https://jiacheng-pan.github.io/wiki/2018/06/09/%E5%90%B4%E6%81%A9%E8%BE%BE%C2%B7%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/07-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</loc>
     
     <lastmod>2019-01-20T14:20:52.669Z</lastmod>
     

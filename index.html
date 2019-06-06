@@ -169,6 +169,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            webgl
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">1: WebGL-BatchDraw代码阅读+理解</a></li>  <li class="file"><a href="/wiki/2019/06/06/webGL/WebGL学习笔记/">2: WebGL学习笔记</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             吴恩达·机器学习
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/01-监督学习&梯度下降法/">1: 监督学习&梯度下降法</a></li>  <li class="file"><a href="/wiki/2018/06/03/吴恩达·机器学习/02-线性回归/">2: 线性回归</a></li>  <li class="file"><a href="/wiki/2018/06/04/吴恩达·机器学习/03-过拟合&局部加权回归/">3: 过拟合&局部加权回归</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/04-线性模型的概率解释/">4: 线性模型的概率解释</a></li>  <li class="file"><a href="/wiki/2018/06/05/吴恩达·机器学习/05-二分类问题/">5: 二分类问题</a></li>  <li class="file"><a href="/wiki/2018/06/07/吴恩达·机器学习/06-牛顿法/">6: 牛顿法</a></li>  <li class="file"><a href="/wiki/2018/06/09/吴恩达·机器学习/07-广义线性模型/">7: 广义线性模型</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/08-生成学习算法的概念/">8: 生成学习算法的概念</a></li>  <li class="file"><a href="/wiki/2018/06/29/吴恩达·机器学习/09-生成学习算法的例子/">9: 生成学习算法的例子</a></li>  <li class="file"><a href="/wiki/2018/07/02/吴恩达·机器学习/10-SVM（一）概念/">10: SVM（一）概念</a></li>  <li class="file"><a href="/wiki/2018/07/03/吴恩达·机器学习/11-SVM（二）最优间隔分类器/">11: SVM（二）最优间隔分类器</a></li>  <li class="file"><a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">12: SVM（三）核函数</a></li>  <li class="file"><a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">13: SVM（四）非线性决策边界</a></li>  <li class="file"><a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/">14: 经验风险最小化</a></li>  <li class="file"><a href="/wiki/2019/01/10/吴恩达·机器学习/15-Vapnik-Chervonenkis Dimension/">15: Vapnik–Chervonenkis dimension</a></li>  <li class="file"><a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/">16: 模型选择和特征选择</a></li>  </ul> 
@@ -245,6 +254,214 @@
 </aside>
             
             <section id="main">
+        <article id="post-webGL/WebGL学习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/06/06/webGL/WebGL学习笔记/">
+            <time datetime="2019-06-06T09:39:11.000Z" itemprop="datePublished">2019-06-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/webGL/WebGL学习笔记.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/webGL/WebGL学习笔记.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/webGL/WebGL学习笔记.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2019/06/06/webGL/WebGL学习笔记/">WebGL学习笔记</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h1 id="webgl学习笔记">WebGL学习笔记</h1>
+<h2 id="入门">入门</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>); <span class="comment">// 获取webGL的context</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 清除背景并填充颜色</span></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line">webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点着色器，主要用于描述顶点属性（大小，位置） GLSL ES语言</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = vec4(0.5, 0.5, 0, 1);</span></span><br><span class="line"><span class="string">	gl_PointSize = 10.0;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器，决定片元的颜色等，GLSL ES语言</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = vec4(1, 0, 0, 1);</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化着色器，initShaders函数并非自带函数，需要调用createShader，compileShader等函数</span></span><br><span class="line"><span class="comment">// initShaders详见：https://github.com/MrZJD/webgl/blob/master/lib/base.js</span></span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE)</span><br><span class="line"></span><br><span class="line"><span class="comment">//画点，0表示从第0个点开始绘制，1表示绘制1个点</span></span><br><span class="line">webgl.drawArrays(webgl.POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="使用attribute">使用attribute</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点着色器程序</span></span><br><span class="line"><span class="keyword">var</span> VSHADER_SOURCE = </span><br><span class="line"><span class="string">`attribute vec4 a_Position; //声明attribute变量，存储限定符storage qualifier，必须声明成全局变量，从外部传入</span></span><br><span class="line"><span class="string">attribute float a_PointSize;// 限定符 数据类型 变量名</span></span><br><span class="line"><span class="string">void main() &#123;</span></span><br><span class="line"><span class="string">	gl_Position = a_Position;</span></span><br><span class="line"><span class="string">	gl_PointSize = a_PointSize;</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 片元着色器程序</span></span><br><span class="line"><span class="keyword">var</span> FSHADER_SOURCE = </span><br><span class="line"><span class="string">`void main() &#123;</span></span><br><span class="line"><span class="string">	gl_FragColor = vec4(1, 0, 0, 1);</span></span><br><span class="line"><span class="string">&#125;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'webgl'</span>);</span><br><span class="line"><span class="keyword">var</span> webgl = canvas.getContext(<span class="string">'webgl'</span>);</span><br><span class="line">initShaders( webgl, VSHADER_SOURCE, FSHADER_SOURCE)</span><br><span class="line"><span class="comment">// 获取attribute变量的地址</span></span><br><span class="line"><span class="keyword">var</span> a_Position = webgl.getAttribLocation(webgl.program, <span class="string">'a_Position'</span>);</span><br><span class="line"><span class="keyword">var</span> a_PointSize = webgl.getAttribLocation(webgl.program, <span class="string">'a_PointSize'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据地址给attribute变量赋值</span></span><br><span class="line">webgl.vertexAttrib3f(a_Position, <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span>); <span class="comment">// 省略第四个参数，会默认赋值1.0</span></span><br><span class="line">webgl.vertexAttrib1f(a_PointSize, <span class="number">10.0</span>);</span><br><span class="line"><span class="comment">// 还有vertexAttrib2f, vertexAttrib4f等函数</span></span><br><span class="line"><span class="comment">// 也可以用矢量版本：</span></span><br><span class="line"><span class="comment">// var position = new Float32Array([1.0, 2.0, 3.0, 1.0]);</span></span><br><span class="line"><span class="comment">// gl.vertextAttrib4fv(a_Position, position)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 清空颜色缓冲区</span></span><br><span class="line">webgl.clearColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.6</span>);</span><br><span class="line">webgl.clear(webgl.COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 画点</span></span><br><span class="line">webgl.drawArrays(webgl.POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/wiki/2019/06/06/webGL/WebGL学习笔记/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-webGL/WebGL-BatchDraw代码阅读+理解" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/webgl/">webgl</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/webgk/">webgk</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">
+            <time datetime="2019-06-06T09:38:00.000Z" itemprop="datePublished">2019-06-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/webGL/WebGL-BatchDraw代码阅读+理解.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/">WebGL-BatchDraw代码阅读+理解</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="webgl-batchdraw代码阅读理解">WebGL-BatchDraw代码阅读+理解</h2>
+<h3 id="webgl2和webgl1的区别">WebGL2和WebGL1的区别</h3>
+<p>推荐相关文章：<a href="https://www.jianshu.com/p/cb9281eda4e4" target="_blank" rel="noopener">WebGL2系列之从WebGL1迁移到WebGL2</a></p>
+<p>代码中的shader部分几乎没什么区别，只是用了一些300 es版本的新特性：</p>
+<ol type="1">
+<p>
+                
+            
+        
+        
+            </p></ol></div>   
+            <div class="article-more-link">
+                <a href="/wiki/2019/06/06/webGL/WebGL-BatchDraw代码阅读+理解/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-GraphKnowledge/矩阵相关的概念" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -336,6 +553,95 @@
             </p></div>   
             <div class="article-more-link">
                 <a href="/wiki/2019/01/18/GraphKnowledge/矩阵相关的概念/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-GraphKnowledge/链接相关的概念" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/GraphKnowledge/">GraphKnowledge</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/graph/">graph</a>, <a class="tag-link" href="/wiki/tags/图/">图</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">
+            <time datetime="2019-01-18T05:55:00.000Z" itemprop="datePublished">2019-01-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">链接相关的概念</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <h3 id="bridgecut-edgeisthmus-桥边割边峡谷">bridge/cut edge/isthmus 桥边/割边/峡谷</h3>
+<p><code>Bridge</code>，也被称为<code>cut edge</code>或者<code>isthmus</code>，指的是某一条边，如果在图中删掉该边，这个图中的连通子图的数量会增加，那么这条边就会被称为<code>bridge</code>。</p>
+
             </div>
         
         <footer class="article-footer">
@@ -453,95 +759,6 @@
 
 
     
-        <article id="post-GraphKnowledge/链接相关的概念" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/GraphKnowledge/">GraphKnowledge</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/graph/">graph</a>, <a class="tag-link" href="/wiki/tags/图/">图</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">
-            <time datetime="2019-01-18T05:55:00.000Z" itemprop="datePublished">2019-01-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/GraphKnowledge/链接相关的概念.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2019/01/18/GraphKnowledge/链接相关的概念/">链接相关的概念</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <h3 id="bridgecut-edgeisthmus-桥边割边峡谷">bridge/cut edge/isthmus 桥边/割边/峡谷</h3>
-<p><code>Bridge</code>，也被称为<code>cut edge</code>或者<code>isthmus</code>，指的是某一条边，如果在图中删掉该边，这个图中的连通子图的数量会增加，那么这条边就会被称为<code>bridge</code>。</p>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <article id="post-GraphKnowledge/节点相关的概念" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -620,104 +837,19 @@
                 
                 
                     
-                    <p></p><h3 id="betweenness-介数">betweenness 介数</h3>
-<p>节点的betweenness，可以定义为： <span class="math display">\[
-betweenness(v) = \sum_{s \neq v \neq t \in V}\frac{\sigma_{st}(v)}{\sigma_{st}}
-\]</span> 其中<span class="math inline">\(\sigma_{st}\)</span>指的是节点<span class="math inline">\(s, t\)</span>之间的最短路的数量，而<span class="math inline">\(\sigma_{st}(v)\)</span>则是其中经过节点<span class="math inline">\(v\)</span>的路径数量。</p>
-<p>上述定义可以阐述为：</p>
+                    <p></p><h3 id="centrality-中心度">centrality 中心度</h3>
+<p>centrality，中心度，可以用于回答“重要节点的特征是什么？”之类的问题。一般而言，有这三种度量方式比较常用：</p>
+<ul>
+<li>degree centrality[/#degree-度]</li>
+<li>betweenness centrality[/#betweenness-介数]</li>
 <p>
                 
             
         
         
-            </p></div>   
+            </p></ul></div>   
             <div class="article-more-link">
                 <a href="/wiki/2019/01/18/GraphKnowledge/节点相关的概念/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-GraphKnowledge/Home" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/GraphKnowledge/">GraphKnowledge</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/graph/">graph</a>, <a class="tag-link" href="/wiki/tags/图/">图</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/2019/01/18/GraphKnowledge/Home/">
-            <time datetime="2019-01-18T05:53:00.000Z" itemprop="datePublished">2019-01-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/GraphKnowledge/Home.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/GraphKnowledge/Home.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/GraphKnowledge/Home.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2019/01/18/GraphKnowledge/Home/">Introduction</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p>一些图论、图挖掘等图相关领域的知识收集、汇总。</p>
-
             </div>
         
         <footer class="article-footer">
@@ -822,6 +954,91 @@ betweenness(v) = \sum_{s \neq v \neq t \in V}\frac{\sigma_{st}(v)}{\sigma_{st}}
             </p></li></ul></div>   
             <div class="article-more-link">
                 <a href="/wiki/2019/01/18/吴恩达·机器学习/16-模型选择和特征选择/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-GraphKnowledge/Home" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/wiki/categories/GraphKnowledge/">GraphKnowledge</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/wiki/tags/graph/">graph</a>, <a class="tag-link" href="/wiki/tags/图/">图</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/2019/01/18/GraphKnowledge/Home/">
+            <time datetime="2019-01-18T05:53:00.000Z" itemprop="datePublished">2019-01-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/GraphKnowledge/Home.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/GraphKnowledge/Home.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/GraphKnowledge/Home.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/wiki/2019/01/18/GraphKnowledge/Home/">Introduction</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p>一些图论、图挖掘等图相关领域的知识收集、汇总。</p>
+
             </div>
         
         <footer class="article-footer">
@@ -1030,214 +1247,6 @@ S=\lbrace (x^{(i)}, y^{(i)}) \rbrace _ {i = 1} ^ m, (x^{(i)}, y^{(i)}) \sim {\ca
             </p></span></p></div>   
             <div class="article-more-link">
                 <a href="/wiki/2019/01/05/吴恩达·机器学习/14-经验风险最小化/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-吴恩达·机器学习/13-SVM（四）非线性决策边界" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/SVM/">SVM</a>, <a class="tag-link" href="/wiki/tags/坐标上升法/">坐标上升法</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/非线性决策边界/">非线性决策边界</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">
-            <time datetime="2018-07-25T05:53:00.000Z" itemprop="datePublished">2018-07-25</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/13-SVM（四）非线性决策边界.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/13-SVM（四）非线性决策边界.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/13-SVM（四）非线性决策边界.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/">SVM（四）非线性决策边界</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p><img src="http://jackie-image.oss-cn-hangzhou.aliyuncs.com/18-7-25/83102162.jpg"></p>
-<p>当数据中存在异常点时，比如上述的情况，导致原先可以用直线a分割的数据现在不得不用b来进行，以保证完美的分割。由此我们引出了<strong>非线性决策边界</strong>（<em>non-linear decision boundaries</em>）来解决这样的问题。</p>
-<p>观察原SVM问题的目标： <span class="math display">\[
-\min_{w, b} \frac{1}{2}||w|^2 \\\
-\text{ s.t. }y^{(i)} \cdot (w^T \cdot x^{(i)}+b) \geq 1, i=1,\ldots,m
-<p>
-                
-            
-        
-        
-            </p></span></p></div>   
-            <div class="article-more-link">
-                <a href="/wiki/2018/07/25/吴恩达·机器学习/13-SVM（四）非线性决策边界/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-吴恩达·机器学习/12-SVM（三）核函数" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/wiki/categories/吴恩达·机器学习/">吴恩达·机器学习</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/wiki/tags/SVM/">SVM</a>, <a class="tag-link" href="/wiki/tags/机器学习/">机器学习</a>, <a class="tag-link" href="/wiki/tags/核函数/">核函数</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">
-            <time datetime="2018-07-22T13:33:00.000Z" itemprop="datePublished">2018-07-22</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/吴恩达·机器学习/12-SVM（三）核函数.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/">SVM（三）核函数</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>在SVM(二)中，我们看到了如下的表示形式： <span class="math display">\[
-W(\alpha)=\sum_{i=1}\alpha_i-\frac{1}{2}\sum_{i=1}\sum_{j=1}\alpha_i\alpha_jy_iy_j(x_i \cdot x_j)
-\]</span> 这里，内积<span class="math inline">\((x_i \cdot x_j)\)</span>就是最简单的核函数的形式。一般核函数会被写成<span class="math inline">\(\langle x^{(i)}, x^{(j)} \rangle\)</span>的形式。</p>
-<p>有时候，我们会将一些特征转换到高维空间上，就像我们在之前的过拟合&amp;局部加权回归中提到的，比如特征<span class="math inline">\(x\)</span>表示的是房屋面积，我们需要预测房子是否会在6个月内被卖出，我们有时候会将这个特征映射成如下的形式： <span class="math display">\[
-x \rightarrow \begin{bmatrix}
-<p>
-                
-            
-        
-        
-            </p></span></p></div>   
-            <div class="article-more-link">
-                <a href="/wiki/2018/07/22/吴恩达·机器学习/12-SVM（三）核函数/#more">Read More</a>
             </div>
         
         <footer class="article-footer">
